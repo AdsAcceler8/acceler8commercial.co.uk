@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Services — Acceler8 Commercial Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1C2D4F;--navy-deep:#0F1B31;--gold:#C49A3C;--gold-light:#D4AF62;--cream:#F8F7F4;--white:#fff;--text-mid:#4A5A6A;--text-light:#7A8A9A;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
+.logo-svg{width:44px;height:44px}
+
+/* ── HERO ── */
+#hero{min-height:48vh;background:var(--navy-deep);display:flex;align-items:flex-end;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
+#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end}
+.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;opacity:0;animation:fadeUp .7s .2s ease forwards}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,76px);font-weight:600;line-height:.95;color:#fff;letter-spacing:-.02em;margin-bottom:0;opacity:0;animation:fadeUp .7s .35s ease forwards}
+.hero-h em{font-style:italic;color:var(--gold)}
+.hero-rule{width:56px;height:1px;background:var(--gold);margin-top:2rem;opacity:0;animation:fadeUp .7s .5s ease forwards}
+.hero-right{opacity:0;animation:fadeUp .7s .5s ease forwards}
+.hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;color:rgba(255,255,255,.6);line-height:1.7;margin-bottom:2rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem}
+.hero-pill{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);border:1px solid rgba(255,255,255,.12);padding:.3rem .85rem;border-radius:2px}
+
+/* ── SERVICE NAV ── */
+#service-nav{position:sticky;top:62px;z-index:150;background:var(--navy);background-color:#0F1B31 !important;border-bottom:1px solid rgba(255,255,255,.08);box-shadow:0 2px 8px rgba(0,0,0,.3);width:100%;margin-top:-12px}
+.svc-tabs{max-width:1100px;margin:0 auto;display:flex;padding:0 3rem}
+.svc-tab{padding:1rem 1.75rem;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);cursor:pointer;border-bottom:2px solid transparent;transition:color .2s,border-color .2s;white-space:nowrap;text-decoration:none;display:block}
+.svc-tab:hover{color:rgba(255,255,255,.8)}
+.svc-tab.active{color:var(--gold);border-bottom-color:var(--gold)}
+
+/* ── SERVICE SECTIONS ── */
+.svc-section{padding:7rem 3rem;position:relative}
+.svc-section:nth-child(odd){background:var(--white)}
+.svc-section:nth-child(even){background:var(--cream)}
+.svc-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.08),transparent)}
+.svc-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1.4fr;gap:6rem;align-items:start}
+.svc-inner.reverse{direction:rtl}
+.svc-inner.reverse > *{direction:ltr}
+.svc-left{position:sticky;top:140px}
+.svc-num{font-family:'Cormorant Garamond',serif;font-size:clamp(80px,12vw,160px);font-weight:600;line-height:.85;color:rgba(28,45,79,.06);margin-bottom:-.5rem;display:block}
+.svc-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:block}
+.svc-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,44px);font-weight:600;color:var(--navy);line-height:1.15;margin-bottom:1.5rem}
+.svc-title em{font-style:italic;color:var(--gold)}
+.svc-hook{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;font-style:italic;color:var(--text-mid);line-height:1.6;margin-bottom:2rem;padding-bottom:2rem;border-bottom:1px solid rgba(28,45,79,.1)}
+.svc-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:2rem}
+.svc-tag{font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,.35);padding:.3rem .8rem;border-radius:2px}
+.svc-cta{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.5rem;font-size:11.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--navy);text-decoration:none;font-weight:500;transition:color .2s}
+.svc-cta:hover{color:var(--gold)}
+.svc-cta::after{content:'→';font-size:14px;transition:transform .2s}
+.svc-cta:hover::after{transform:translateX(4px)}
+
+/* Right column */
+.svc-body p{font-size:15px;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem}
+.svc-body strong{color:var(--navy);font-weight:500}
+.svc-problem{background:var(--navy);padding:2rem 2.25rem;border-radius:2px;margin-bottom:2rem}
+.svc-problem-eye{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:.75rem;display:block}
+.svc-problem p{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:400;font-style:italic;color:rgba(255,255,255,.85);line-height:1.55;margin-bottom:0}
+.svc-delivers{margin-top:2rem}
+.svc-delivers-title{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);margin-bottom:1.25rem;display:block;font-weight:500}
+.svc-deliver-item{display:flex;gap:1rem;margin-bottom:1.1rem;align-items:flex-start}
+.svc-deliver-item::before{content:'';width:20px;height:1px;background:var(--gold);flex-shrink:0;margin-top:.65rem}
+.svc-deliver-item p{font-size:14px;line-height:1.75;color:var(--text-mid);font-weight:300;margin-bottom:0}
+.svc-deliver-item p strong{color:var(--navy);font-weight:500}
+.svc-who{margin-top:2rem;padding:1.5rem 1.75rem;border:1px solid rgba(28,45,79,.08);border-radius:2px}
+.svc-who-eye{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.75rem;display:block}
+.svc-who p{font-size:13.5px;line-height:1.75;color:var(--text-mid);font-weight:300;margin-bottom:0}
+
+/* ── CTA ── */
+#cta{background:var(--navy-deep);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.04) 1px,transparent 1px);background-size:64px 64px}
+#cta::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-eye{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,62px);font-weight:500;color:#fff;line-height:1.2;margin-bottom:1rem}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-p{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2.5rem}
+.btn-gold{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .2s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.cta-email{display:inline-block;font-size:13px;letter-spacing:.1em;color:var(--gold-light);text-decoration:none;margin-top:1.25rem;transition:color .2s}
+.cta-email:hover{color:#fff}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
+.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-logo-text{display:none}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:11px}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
+  .hero-h{font-size:clamp(28px,5vw,48px);line-height:1.1}
+  .svc-header{padding:2rem 1.5rem;text-align:center}
+  .section-h-dark{font-size:clamp(24px,5vw,40px)}
+  .svc-tabs{padding:0 1.5rem;gap:0.5rem;font-size:11px}
+  .svc-inner{grid-template-columns:1fr;gap:3rem;padding:0 1.5rem}
+  .svc-section{padding:2rem 1.5rem}
+  .svc-num{font-size:3rem}
+  .svc-title{font-size:20px}
+  .svc-body{font-size:14px}
+  .svc-sub{font-size:14px}
+  .cta-inner{padding:2rem 1.5rem}
+  .cta-h{font-size:clamp(24px,5vw,42px)}
+  .cta-p{font-size:14px}
+  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
+}
+.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.footer-links a:hover{color:var(--gold-light)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    
+    <span class="nav-logo-text">
+      <span class="nav-logo-main">Acceler8</span>
+      <span class="nav-logo-sub">Commercial Ltd</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">What we do</span>
+      <h1 class="hero-h">Four ways to <em>accelerate</em><br>commercial performance</h1>
+      <div class="hero-rule"></div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-intro">Whether you need a deal closed, a pricing model rebuilt, contracts drafted without lawyers in the room, or a commercial function that doesn't yet exist — Acceler8 delivers.</p>
+      <div class="hero-pills">
+        <span class="hero-pill">B2B Software</span>
+        <span class="hero-pill">Fintech</span>
+        <span class="hero-pill">SaaS</span>
+        <span class="hero-pill">Professional Services</span>
+        <span class="hero-pill">SME to Mid-Market</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICE NAV ══ -->
+<div id="service-nav">
+  <div class="svc-tabs">
+    <a href="#s01" class="svc-tab active">01 · Commercial Leadership</a>
+    <a href="#s02" class="svc-tab">02 · Pricing Strategy</a>
+    <a href="#s03" class="svc-tab">03 · Legal &amp; Commercial</a>
+    <a href="#s04" class="svc-tab">04 · Commercial Function Build</a>
+  </div>
+</div>
+
+<!-- ══ SERVICE 01 ══ -->
+<section class="svc-section" id="s01">
+  <div class="svc-inner">
+    <div class="svc-left reveal">
+      <span class="svc-num">01</span>
+      <span class="svc-eyebrow">Commercial Leadership</span>
+      <h2 class="svc-title">Drive revenue.<br>Reduce cost.<br><em>Get to market faster.</em></h2>
+      <p class="svc-hook">Senior commercial expertise, embedded directly into your business — without the cost or commitment of a permanent hire.</p>
+      <div class="svc-tags">
+        <span class="svc-tag">Revenue Growth</span>
+        <span class="svc-tag">Cost Reduction</span>
+        <span class="svc-tag">Deal Velocity</span>
+        <span class="svc-tag">Interim Leadership</span>
+        <span class="svc-tag">Go-To-Market</span>
+        <span class="svc-tag">Org Alignment</span>
+      </div>
+      <a href="contact.html" class="svc-cta">Talk to us about this</a>
+    </div>
+    <div class="svc-body">
+      <div class="svc-problem reveal d1">
+        <span class="svc-problem-eye">The challenge</span>
+        <p>Many B2B software and Fintech businesses are growing — but their commercial operation hasn't kept pace. Deals take too long, the sales process lacks structure, costs are creeping up and the speed at which you can bring new products and clients to market is slower than it should be.</p>
+      </div>
+      <div class="reveal d2">
+        <p>Acceler8 provides <strong>interim and fractional senior commercial leadership</strong> for businesses that need to move faster, perform better and build a more disciplined commercial engine — without waiting to hire a full-time Commercial Director.</p>
+        <p>Drawing on twenty years of experience leading commercial functions at some of the world's most demanding organisations, Adam embeds directly into your business, works alongside your team and drives measurable improvement from day one.</p>
+      </div>
+      <div class="svc-delivers reveal d2">
+        <span class="svc-delivers-title">What we deliver</span>
+        <div class="svc-deliver-item"><p><strong>Revenue acceleration</strong> — identifying and removing the commercial friction that slows deals, costs you clients and limits growth.</p></div>
+        <div class="svc-deliver-item"><p><strong>Cost reduction</strong> — reviewing cost-to-serve, supplier terms and operational spend to improve margin without cutting capability.</p></div>
+        <div class="svc-deliver-item"><p><strong>Speed to market</strong> — streamlining the path from product or service to signed contract, reducing the barriers clients face when trying to work with you.</p></div>
+        <div class="svc-deliver-item"><p><strong>Sales process redesign</strong> — introducing structure, governance and repeatability so your sales team performs consistently, not just occasionally.</p></div>
+        <div class="svc-deliver-item"><p><strong>Market entry support</strong> — helping you enter new markets and territories with the commercial infrastructure to compete from the start.</p></div>
+      </div>
+      <div class="svc-who reveal d3">
+        <span class="svc-who-eye">Who this is for</span>
+        <p>B2B software and Fintech businesses — from ambitious SMEs looking to build commercial momentum, to established mid-market companies whose commercial performance has plateaued. Particularly suited to businesses that are scaling but lack the senior commercial experience to do so efficiently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICE 02 ══ -->
+<section class="svc-section" id="s02">
+  <div class="svc-inner reverse">
+    <div class="svc-left reveal">
+      <span class="svc-num">02</span>
+      <span class="svc-eyebrow">Pricing Strategy</span>
+      <h2 class="svc-title">Build pricing that<br>works from day one —<br><em>and scales.</em></h2>
+      <p class="svc-hook">Pricing is one of the most powerful commercial levers available to any business. Most companies never fully pull it.</p>
+      <div class="svc-tags">
+        <span class="svc-tag">SaaS Pricing</span>
+        <span class="svc-tag">Solutions Pricing</span>
+        <span class="svc-tag">Services Pricing</span>
+        <span class="svc-tag">Price Books</span>
+        <span class="svc-tag">Margin Management</span>
+        <span class="svc-tag">Deal Governance</span>
+      </div>
+      <a href="contact.html" class="svc-cta">Talk to us about this</a>
+    </div>
+    <div class="svc-body">
+      <div class="svc-problem reveal d1">
+        <span class="svc-problem-eye">The challenge</span>
+        <p>Too many businesses price on instinct — or worse, copy competitors without understanding the market's real willingness to pay. The result: revenue left on the table, margin eroded by inconsistent discounting, and a pricing model that breaks down the moment you try to scale it.</p>
+      </div>
+      <div class="reveal d2">
+        <p>Acceler8 designs and implements <strong>end-to-end pricing architectures</strong> for SaaS products, professional services and solutions businesses — from the very first product test through to launch and long-term steady state.</p>
+        <p>Having sat on both sides of the commercial table, Adam brings a uniquely grounded perspective to pricing. He understands how procurement teams stress-test your numbers, what value drivers actually move buyers, and how to build a pricing model that holds up under scrutiny — and keeps protecting your margin as you scale.</p>
+      </div>
+      <div class="svc-delivers reveal d2">
+        <span class="svc-delivers-title">What we deliver</span>
+        <div class="svc-deliver-item"><p><strong>Pricing model design</strong> — building the right commercial structure for your product or service, whether subscription, consumption, outcome-based or hybrid.</p></div>
+        <div class="svc-deliver-item"><p><strong>Price book development</strong> — creating a clear, governed price book that gives your sales team confidence and your business consistency.</p></div>
+        <div class="svc-deliver-item"><p><strong>Deal margin management</strong> — designing the approval frameworks and discount governance that protect margin at every deal stage.</p></div>
+        <div class="svc-deliver-item"><p><strong>Launch and test support</strong> — working through the early commercial stages with you, refining based on real market feedback before scaling.</p></div>
+        <div class="svc-deliver-item"><p><strong>Competitive positioning</strong> — understanding where your pricing sits relative to market and structuring your value narrative accordingly.</p></div>
+      </div>
+      <div class="svc-who reveal d3">
+        <span class="svc-who-eye">Who this is for</span>
+        <p>Software and Fintech businesses launching new products or services, companies that have grown organically but never formalised their pricing approach, and businesses that sense they are undercharging — or discounting too freely — but don't know how to fix it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICE 03 ══ -->
+<section class="svc-section" id="s03">
+  <div class="svc-inner">
+    <div class="svc-left reveal">
+      <span class="svc-num">03</span>
+      <span class="svc-eyebrow">Legal &amp; Commercial</span>
+      <h2 class="svc-title">Close deals faster.<br>Without putting lawyers<br><em>in the room.</em></h2>
+      <p class="svc-hook">Contracts should close deals — not delay them. Most businesses have it the wrong way round.</p>
+      <div class="svc-tags">
+        <span class="svc-tag">Contract Drafting</span>
+        <span class="svc-tag">Negotiation</span>
+        <span class="svc-tag">MSA &amp; SaaS Agreements</span>
+        <span class="svc-tag">Commercial Playbooks</span>
+        <span class="svc-tag">Risk Management</span>
+        <span class="svc-tag">Board Governance</span>
+      </div>
+      <a href="contact.html" class="svc-cta">Talk to us about this</a>
+    </div>
+    <div class="svc-body">
+      <div class="svc-problem reveal d1">
+        <span class="svc-problem-eye">The challenge</span>
+        <p>Most businesses put lawyers in the room to negotiate contracts. Lawyers are trained to win every point — which slows deals, raises tensions and kills commercial momentum. The result is a process that protects the business on paper whilst damaging it in practice: lost deals, strained relationships and months spent on redlines that didn't need to be there.</p>
+      </div>
+      <div class="reveal d2">
+        <p>Acceler8 takes a fundamentally different approach. Adam drafts, reviews and negotiates complex commercial contracts <strong>end-to-end — without legal counsel in the room</strong>. Backed by Board-approved parameters and a structured commercial playbook, every deal is handled with full awareness of risk, at pace, and with both sides walking away ready to do business.</p>
+        <p>This is not about cutting corners. It is about applying <strong>commercial intelligence</strong> — not legal process — to the negotiation. Knowing which terms matter, which can be conceded without consequence, and how to reach a position that works for both parties without making it a fight.</p>
+      </div>
+      <div class="svc-delivers reveal d2">
+        <span class="svc-delivers-title">What we deliver</span>
+        <div class="svc-deliver-item"><p><strong>Contract drafting from scratch</strong> — MSAs, SaaS subscription agreements, professional services terms, partnership and supplier contracts built to your business requirements.</p></div>
+        <div class="svc-deliver-item"><p><strong>Commercial playbook design</strong> — a structured negotiation framework aligned to Board-approved parameters, so every deal is handled consistently and within governance.</p></div>
+        <div class="svc-deliver-item"><p><strong>Live deal negotiation</strong> — direct involvement in active commercial negotiations, bringing experience and composure to the table when it matters most.</p></div>
+        <div class="svc-deliver-item"><p><strong>Contract review and risk assessment</strong> — reviewing incoming terms with a commercial (not just legal) lens, identifying genuine risk versus negotiating noise.</p></div>
+        <div class="svc-deliver-item"><p><strong>Template library development</strong> — building a suite of contract templates that reduce time-to-first-draft and give your team a strong starting position in every negotiation.</p></div>
+      </div>
+      <div class="svc-who reveal d3">
+        <span class="svc-who-eye">Who this is for</span>
+        <p>B2B software and Fintech companies whose contracts are slowing deals rather than enabling them. Businesses spending too much time and money on external legal counsel for routine commercial negotiations. Sales teams that lack the commercial contract knowledge to negotiate confidently and close faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SERVICE 04 ══ -->
+<section class="svc-section" id="s04">
+  <div class="svc-inner reverse">
+    <div class="svc-left reveal">
+      <span class="svc-num">04</span>
+      <span class="svc-eyebrow">Commercial Function Build</span>
+      <h2 class="svc-title">Build the commercial<br>infrastructure your<br><em>business needs to scale.</em></h2>
+      <p class="svc-hook">Commercial processes should act as an enabler and an accelerator to sales, not an operational bottleneck to be navigated in fear or avoided altogether.</p>
+      <div class="svc-tags">
+        <span class="svc-tag">RevOps</span>
+        <span class="svc-tag">Bid Review</span>
+        <span class="svc-tag">Commercial Ops</span>
+        <span class="svc-tag">Org Design</span>
+        <span class="svc-tag">Process Design</span>
+        <span class="svc-tag">Team Build</span>
+      </div>
+      <a href="contact.html" class="svc-cta">Talk to us about this</a>
+    </div>
+    <div class="svc-body">
+      <div class="svc-problem reveal d1">
+        <span class="svc-problem-eye">The challenge</span>
+        <p>Smaller businesses often lack the commercial infrastructure that larger competitors take for granted — no formal pricing process, no bid review, no RevOps function, no commercial governance. More established companies have these things, but they were built for a different size or shape of business and now they slow everything down rather than enabling growth.</p>
+      </div>
+      <div class="reveal d2">
+        <p>Acceler8 designs and builds <strong>commercial functions from the ground up</strong> — or overhauls existing ones that have stopped working. This is not consultancy at arm's length. It means getting into the business, understanding how it actually operates, and building the structure, processes and governance that let it compete and scale.</p>
+        <p>Having built a global commercial function from scratch at Aptitude Software — and led procurement and transformation programmes at GSK and Mars — Adam brings hands-on experience of what a high-performing commercial operation actually looks like, and what it takes to build one in practice.</p>
+      </div>
+      <div class="svc-delivers reveal d2">
+        <span class="svc-delivers-title">What we deliver</span>
+        <div class="svc-deliver-item"><p><strong>Commercial function design</strong> — defining the right structure, roles, responsibilities and ways of working for your commercial operation at your stage of growth.</p></div>
+        <div class="svc-deliver-item"><p><strong>RevOps implementation</strong> — building the revenue operations infrastructure that connects sales, pricing, contracts and delivery into a coherent commercial engine.</p></div>
+        <div class="svc-deliver-item"><p><strong>Bid Review Committee</strong> — designing and standing up a formal bid review process that brings governance and consistency to how you price, approve and pursue new opportunities.</p></div>
+        <div class="svc-deliver-item"><p><strong>Pricing function</strong> — establishing a dedicated pricing capability, including ownership, governance, tooling and the processes that keep your pricing aligned with the market.</p></div>
+        <div class="svc-deliver-item"><p><strong>Hiring and onboarding</strong> — where needed, supporting the recruitment and onboarding of commercial talent into newly created or redesigned roles.</p></div>
+      </div>
+      <div class="svc-who reveal d3">
+        <span class="svc-who-eye">Who this is for</span>
+        <p>Fast-growing SMEs that have outgrown ad hoc commercial processes and need to build something fit for the next stage. Mid-market businesses whose commercial operations were built for a different era and are now holding back performance. Any business preparing for significant growth, investment or acquisition that needs a credible commercial infrastructure in place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <span class="cta-eye reveal">Not sure where to start?</span>
+    <h2 class="cta-h reveal d1">Let's have a<br><em>straight conversation.</em></h2>
+    <p class="cta-p reveal d2">Tell us what is holding your commercial performance back. We will give you an honest view of where Acceler8 can help — and how quickly we can get started.</p>
+    <a href="contact.html" class="btn-gold reveal d3">Get in Touch</a><br>
+    <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-in">
+    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}
+  });
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el => observer.observe(el));
+
+// Active tab on scroll
+const sections = document.querySelectorAll('.svc-section[id]');
+const tabs = document.querySelectorAll('.svc-tab');
+const navHeight = 74 + 44;
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - navHeight - 10) current = s.id;
+  });
+  tabs.forEach(t => {
+    t.classList.toggle('active', t.getAttribute('href') === '#' + current);
+  });
+});
+</script>
+</body>
+</html>

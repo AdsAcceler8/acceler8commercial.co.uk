@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Acceler8 Commercial Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1C2D4F;--navy-deep:#0F1B31;--gold:#C49A3C;--gold-light:#D4AF62;--cream:#F8F7F4;--white:#fff;--text-mid:#4A5A6A;--text-light:#7A8A9A;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
+.logo-svg{width:44px;height:44px}
+
+/* ── HERO ── */
+#hero{min-height:42vh;background:var(--navy-deep);display:flex;align-items:flex-end;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
+#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
+.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;opacity:0;animation:fadeUp .7s .2s ease forwards}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,7vw,86px);font-weight:600;line-height:.95;color:#fff;letter-spacing:-.02em;opacity:0;animation:fadeUp .7s .35s ease forwards}
+.hero-h em{font-style:italic;color:var(--gold)}
+.hero-rule{width:56px;height:1px;background:var(--gold);margin-top:2rem;opacity:0;animation:fadeUp .7s .5s ease forwards}
+
+/* ── MAIN CONTACT SECTION ── */
+#contact{background:var(--white);padding:7rem 3rem}
+.contact-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1.25fr 1fr;gap:7rem;align-items:start}
+
+/* ── FORM ── */
+.form-head{margin-bottom:2.75rem}
+.form-label-top{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.875rem}
+.form-h{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3vw,38px);font-weight:600;color:var(--navy);line-height:1.2}
+.form-h em{font-style:italic;color:var(--gold)}
+.contact-form{display:flex;flex-direction:column;gap:1.25rem}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+.field{display:flex;flex-direction:column;gap:.5rem}
+.field label{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--navy)}
+.field label span{color:var(--gold);margin-left:2px}
+.field input,.field select,.field textarea{width:100%;padding:.875rem 1.1rem;border:1px solid rgba(28,45,79,.15);border-radius:2px;font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:300;color:var(--navy);background:var(--cream);outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none}
+.field input::placeholder,.field textarea::placeholder{color:var(--text-light)}
+.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--gold);background:var(--white)}
+.field select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%237A8A9A' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1.1rem center}
+.field textarea{resize:vertical;min-height:140px;line-height:1.7}
+.form-check-group{display:flex;flex-direction:column;gap:.5rem}
+.form-checks{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+.check-item{display:flex;align-items:center;gap:.6rem;cursor:pointer}
+.check-item input[type=checkbox]{width:16px;height:16px;border:1px solid rgba(28,45,79,.2);border-radius:2px;accent-color:var(--gold);cursor:pointer;flex-shrink:0}
+.check-item input[type=checkbox]:checked{background-color:var(--gold);border-color:var(--gold)}
+.check-item span{font-size:13px;font-weight:300;color:var(--text-mid)}
+.form-submit{margin-top:.5rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
+.btn-submit{padding:1rem 2.75rem;background:var(--navy);color:#fff;border:none;font-family:'DM Sans',sans-serif;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s,transform .2s}
+.btn-submit:hover{background:var(--gold);transform:translateY(-2px)}
+.form-note{font-size:12px;font-weight:300;color:var(--text-light);line-height:1.6}
+
+/* ── SUCCESS STATE ── */
+#form-success{display:none;padding:2.5rem;background:rgba(196,154,60,.08);border:1px solid rgba(196,154,60,.3);border-radius:2px;text-align:center}
+#form-success h3{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:.75rem}
+#form-success p{font-size:14px;font-weight:300;color:var(--text-mid);line-height:1.75}
+
+/* ── RIGHT COLUMN ── */
+.contact-right{padding-top:.5rem}
+.contact-detail-block{margin-bottom:3rem}
+.detail-eye{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:1.25rem}
+.detail-item{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.25rem;text-decoration:none;group:true}
+.detail-icon{width:40px;height:40px;border:1px solid rgba(28,45,79,.1);border-radius:2px;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:border-color .2s,background .2s}
+.detail-item:hover .detail-icon{border-color:var(--gold);background:rgba(196,154,60,.06)}
+.detail-text-label{font-size:10px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--text-light);display:block;margin-bottom:.2rem}
+.detail-text-value{font-size:15px;font-weight:400;color:var(--navy);transition:color .2s}
+.detail-item:hover .detail-text-value{color:var(--gold)}
+
+/* Divider */
+.contact-divider{width:100%;height:1px;background:rgba(28,45,79,.08);margin:2.5rem 0}
+
+/* What to expect */
+.expect-block{}
+.expect-steps{display:flex;flex-direction:column;gap:1.25rem;margin-top:1.5rem}
+.expect-step{display:flex;gap:1.25rem;align-items:flex-start}
+.step-num{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:600;color:rgba(196,154,60,.35);line-height:1;flex-shrink:0;width:28px}
+.step-body{}
+.step-title{font-size:13.5px;font-weight:500;color:var(--navy);margin-bottom:.3rem}
+.step-desc{font-size:13px;font-weight:300;color:var(--text-mid);line-height:1.65}
+
+/* Promise */
+.promise{margin-top:2.5rem;padding:1.5rem 1.75rem;background:var(--cream);border-left:3px solid var(--gold)}
+.promise p{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:400;font-style:italic;color:var(--navy);line-height:1.6}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
+.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-logo-text{display:none}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:11px}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
+  .hero-h{font-size:clamp(28px,5vw,48px)}
+  .contact-section{max-width:100%;padding:1.5rem}
+  .contact-form{padding:1.5rem}
+  .form-label{font-size:13px}
+  input[type=text],input[type=email],textarea,.check-item span{font-size:14px}
+  .check-item{margin-bottom:0.8rem}
+  .btn-submit{padding:0.9rem 1.8rem;font-size:12px}
+  .contact-details{padding:1.5rem;text-align:center}
+  .contact-details p{font-size:13px}
+  .contact-details a{font-size:12px}
+  .cta-inner{padding:2rem 1.5rem}
+  .cta-h{font-size:clamp(24px,5vw,42px)}
+  .cta-p{font-size:14px}
+  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
+}
+.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.footer-links a:hover{color:var(--gold-light)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    
+    <span class="nav-logo-text">
+      <span class="nav-logo-main">Acceler8</span>
+      <span class="nav-logo-sub">Commercial Ltd</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="results.html">Results</a></li>
+    <li><a href="contact.html" class="active nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <span class="hero-eyebrow">Get in touch</span>
+    <h1 class="hero-h">Let's have a<br><em>straight conversation.</em></h1>
+    <div class="hero-rule"></div>
+  </div>
+</section>
+
+<!-- ══ CONTACT ══ -->
+<section id="contact">
+  <div class="contact-wrap">
+
+    <!-- FORM -->
+    <div class="reveal">
+      <div class="form-head">
+        <span class="form-label-top">Enquiry form</span>
+        <h2 class="form-h">Tell us about your<br><em>commercial challenge</em></h2>
+      </div>
+
+      <!-- Replace YOUR_FORM_ID with your Formspree form ID once set up at formspree.io -->
+      <form class="contact-form" id="contact-form" action="https://formspree.io/f/meendwel" method="POST">
+
+        <div class="form-row">
+          <div class="field">
+            <label>Your name <span>*</span></label>
+            <input type="text" name="name" placeholder="Adam Solley" required>
+          </div>
+          <div class="field">
+            <label>Company <span>*</span></label>
+            <input type="text" name="company" placeholder="Acceler8 Commercial Ltd" required>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label>Email address <span>*</span></label>
+            <input type="email" name="email" placeholder="you@yourcompany.com" required>
+          </div>
+          <div class="field">
+            <label>Phone <span style="color:var(--text-light);font-size:10px;font-weight:300;text-transform:none;letter-spacing:0">(optional)</span></label>
+            <input type="tel" name="phone" placeholder="+44 7000 000000">
+          </div>
+        </div>
+
+        <div class="field form-check-group">
+          <label>Which area can we help with? <span style="color:var(--text-light);font-size:10px;font-weight:300;text-transform:none;letter-spacing:0">(select all that apply)</span></label>
+          <div class="form-checks">
+            <label class="check-item"><input type="checkbox" name="service" value="Commercial Leadership"><span>Commercial Leadership</span></label>
+            <label class="check-item"><input type="checkbox" name="service" value="Pricing Strategy"><span>Pricing Strategy</span></label>
+            <label class="check-item"><input type="checkbox" name="service" value="Legal & Commercial"><span>Legal &amp; Commercial</span></label>
+            <label class="check-item"><input type="checkbox" name="service" value="Commercial Function Build"><span>Commercial Function Build</span></label>
+            <label class="check-item"><input type="checkbox" name="service" value="Not sure yet"><span>Not sure yet</span></label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Tell us about your situation <span>*</span></label>
+          <textarea name="message" placeholder="A brief description of your business, the challenges you're facing and what you're hoping to achieve. There are no wrong answers — the more context you can give, the more useful our first conversation will be." required></textarea>
+        </div>
+
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Send Enquiry</button>
+          <p class="form-note">We respond to every enquiry<br>within one business day.</p>
+        </div>
+
+      </form>
+
+      <div id="form-success">
+        <h3>Message received — thank you.</h3>
+        <p>Adam will review your enquiry personally and be in touch within one business day to arrange a conversation.</p>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="contact-right reveal d2">
+
+      <div class="contact-detail-block">
+        <span class="detail-eye">Direct contact</span>
+
+        <a href="mailto:adam@acceler8commercial.co.uk" class="detail-item">
+          <div class="detail-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="4" width="14" height="10" rx="2" stroke="#C49A3C" stroke-width="1.4"/>
+              <path d="M2 6l7 5 7-5" stroke="#C49A3C" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="detail-text-label">Email</span>
+            <span class="detail-text-value">adam@acceler8commercial.co.uk</span>
+          </div>
+        </a>
+
+        <a href="https://www.linkedin.com/in/adamfsolley" target="_blank" class="detail-item">
+          <div class="detail-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <rect x="2" y="2" width="14" height="14" rx="3" stroke="#C49A3C" stroke-width="1.4"/>
+              <path d="M5.5 7.5v5M5.5 5.5v.5" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/>
+              <path d="M8.5 12.5v-3a1.5 1.5 0 013 0v3M8.5 9.5v3" stroke="#C49A3C" stroke-width="1.4" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="detail-text-label">LinkedIn</span>
+            <span class="detail-text-value">linkedin.com/in/adamfsolley</span>
+          </div>
+        </a>
+
+        <a href="tel:+447419994147" class="detail-item">
+          <div class="detail-icon">
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+              <path d="M5 3h2.5l1 3-1.5 1a7 7 0 003 3l1-1.5 3 1V12a2 2 0 01-2 2A11 11 0 013 5a2 2 0 012-2z" stroke="#C49A3C" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="detail-text-label">Phone</span>
+            <span class="detail-text-value">+44 (0) 7419 994 147</span>
+          </div>
+        </a>
+      </div>
+
+      <div class="contact-divider"></div>
+
+      <div class="expect-block">
+        <span class="detail-eye">What happens next</span>
+        <div class="expect-steps">
+          <div class="expect-step">
+            <span class="step-num">1</span>
+            <div class="step-body">
+              <p class="step-title">We review your enquiry</p>
+              <p class="step-desc">Adam reviews every enquiry personally and responds within one business day — no account managers, no holding responses.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="step-num">2</span>
+            <div class="step-body">
+              <p class="step-title">A brief introductory call</p>
+              <p class="step-desc">A 30-minute conversation to understand your situation, your challenges and what you are trying to achieve. Straight and to the point.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="step-num">3</span>
+            <div class="step-body">
+              <p class="step-title">An honest view of fit</p>
+              <p class="step-desc">If Acceler8 can help, Adam will tell you how and what that looks like in practice. If we are not the right fit, we will tell you that too.</p>
+            </div>
+          </div>
+          <div class="expect-step">
+            <span class="step-num">4</span>
+            <div class="step-body">
+              <p class="step-title">We get to work</p>
+              <p class="step-desc">No lengthy proposals or junior teams. Once we are aligned, Adam embeds and starts delivering from day one.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="promise">
+          <p>"Every enquiry is treated with the same directness and respect that we bring to every client engagement. You will always speak to Adam."</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-in">
+    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>observer.observe(el));
+
+// Form submission
+const form=document.getElementById('contact-form');
+const success=document.getElementById('form-success');
+if(form){
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    const btn=form.querySelector('.btn-submit');
+    btn.textContent='Sending...';
+    btn.disabled=true;
+    try{
+      const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      if(res.ok){
+        form.style.display='none';
+        success.style.display='block';
+      } else {
+        btn.textContent='Send Enquiry';
+        btn.disabled=false;
+        alert('Something went wrong — please email us directly at adam@acceler8commercial.co.uk');
+      }
+    } catch(err){
+      btn.textContent='Send Enquiry';
+      btn.disabled=false;
+      alert('Something went wrong — please email us directly at adam@acceler8commercial.co.uk');
+    }
+  });
+}
+</script>
+</body>
+</html>

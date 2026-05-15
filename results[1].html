@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Results — Acceler8 Commercial Ltd</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--navy:#1C2D4F;--navy-deep:#0F1B31;--gold:#C49A3C;--gold-light:#D4AF62;--cream:#F8F7F4;--white:#fff;--text-mid:#4A5A6A;--text-light:#7A8A9A;}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
+.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
+.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
+.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
+.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
+.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
+.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
+.logo-svg{width:44px;height:44px}
+
+/* ── HERO ── */
+#hero{min-height:48vh;background:var(--navy-deep);display:flex;align-items:flex-end;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
+#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end}
+.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;opacity:0;animation:fadeUp .7s .2s ease forwards}
+.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,78px);font-weight:600;line-height:1.05;color:#fff;letter-spacing:-.02em;opacity:0;animation:fadeUp .7s .35s ease forwards}
+.hero-h em{font-style:italic;color:var(--gold)}
+.hero-rule{width:56px;height:1px;background:var(--gold);margin-top:2rem;opacity:0;animation:fadeUp .7s .5s ease forwards}
+.hero-right{opacity:0;animation:fadeUp .7s .5s ease forwards}
+.hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;color:rgba(255,255,255,.6);line-height:1.75}
+
+/* ── STATS BAR ── */
+#stats{background:var(--navy);position:relative}
+#stats::before,#stats::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+#stats::before{top:0}#stats::after{bottom:0}
+.stats-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
+.stat{padding:3rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.stat:last-child{border-right:none}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5.5vw,72px);font-weight:600;color:var(--gold);line-height:1;margin-bottom:.5rem}
+.stat-l{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);line-height:1.6}
+
+/* ── SECTION COMMON ── */
+.results-section{padding:6.5rem 3rem;position:relative}
+.results-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.1),transparent)}
+.results-section.light{background:var(--white)}
+.results-section.cream{background:var(--cream)}
+.results-section.dark{background:var(--navy-deep)}
+.results-section.dark::before{background:linear-gradient(90deg,transparent,rgba(196,154,60,.2),transparent)}
+.section-header{max-width:1100px;margin:0 auto 4rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.section-eye{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.75rem}
+.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:var(--navy);line-height:1.2}
+.section-h-light{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:#fff;line-height:1.2}
+.section-note{font-size:13.5px;font-weight:300;color:var(--text-light);line-height:1.65;max-width:320px;text-align:right}
+
+/* ── RESULT CARDS ── */
+.results-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.result-card{background:var(--cream);padding:2.25rem;border-radius:2px;border:1px solid rgba(28,45,79,.07);position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
+.result-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .4s ease}
+.result-card:hover{transform:translateY(-4px);border-color:rgba(196,154,60,.25);box-shadow:0 12px 40px rgba(28,45,79,.1)}
+.result-card:hover::before{height:100%}
+.results-section.cream .result-card{background:var(--white)}
+.results-section.dark .result-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
+.results-section.dark .result-card:hover{background:rgba(255,255,255,.07);border-color:rgba(196,154,60,.3)}
+.card-company{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
+.card-company-name{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light)}
+.results-section.dark .card-company-name{color:rgba(255,255,255,.35)}
+.card-badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,.35);padding:.2rem .65rem;border-radius:2px}
+.card-stat{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,54px);font-weight:600;color:var(--navy);line-height:1;margin-bottom:.5rem}
+.results-section.dark .card-stat{color:#fff}
+.card-stat-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
+.card-body{font-size:13.5px;line-height:1.8;color:var(--text-mid);font-weight:300}
+.results-section.dark .card-body{color:rgba(255,255,255,.5)}
+.card-body strong{color:var(--navy);font-weight:500}
+.results-section.dark .card-body strong{color:rgba(255,255,255,.8)}
+
+/* ── WIDE CARD ── */
+.result-card.wide{grid-column:span 2}
+.result-card.wide .card-inner{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
+.result-card.wide .card-stat{font-size:clamp(52px,6vw,80px)}
+
+/* ── CLIENTS ── */
+#clients{background:var(--white);padding:5.5rem 3rem;position:relative}
+#clients::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.1),transparent)}
+.clients-inner{max-width:1100px;margin:0 auto;text-align:center}
+.clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;border:1px solid rgba(28,45,79,.07);border-radius:2px;overflow:hidden;margin-top:3rem}
+.client-cell{padding:2.25rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;border-right:1px solid rgba(28,45,79,.07);background:var(--white);transition:background .3s}
+.client-cell:last-child{border-right:none}
+.client-cell:hover{background:var(--cream)}
+.client-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:rgba(28,45,79,.35);transition:color .3s;letter-spacing:.02em}
+.client-cell:hover .client-name{color:var(--navy)}
+.client-sector{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light)}
+.clients-note{font-size:13px;font-weight:300;color:var(--text-light);margin-top:2rem;font-style:italic}
+
+/* ── CTA ── */
+#cta{background:var(--navy-deep);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden}
+#cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.04) 1px,transparent 1px);background-size:64px 64px}
+#cta::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-eye{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
+.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,62px);font-weight:500;color:#fff;line-height:1.2;margin-bottom:1rem}
+.cta-h em{font-style:italic;color:var(--gold)}
+.cta-p{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2.5rem}
+.btn-gold{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .2s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.cta-email{display:inline-block;font-size:13px;letter-spacing:.1em;color:var(--gold-light);text-decoration:none;margin-top:1.25rem;transition:color .2s}
+.cta-email:hover{color:#fff}
+
+/* ── FOOTER ── */
+footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
+.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+
+/* Mobile Responsive */
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-logo-text{display:none}
+  .nav-links{gap:1rem}
+  .nav-links a{font-size:11px}
+  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
+  .hero-h{font-size:clamp(28px,5vw,48px);line-height:1.1}
+  .stats-grid{grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem}
+  .stat-item{padding:1.5rem}
+  .stat-num{font-size:2.5rem}
+  .stat-label{font-size:12px}
+  .section-h-dark{font-size:clamp(24px,5vw,40px)}
+  .section-eye{font-size:12px}
+  .result-card{padding:1.5rem}
+  .card-stat{font-size:2rem}
+  .card-stat-label{font-size:12px}
+  .card-body{font-size:13px;line-height:1.5}
+  .result-grid{grid-template-columns:1fr}
+  .cta-inner{padding:2rem 1.5rem}
+  .cta-h{font-size:clamp(24px,5vw,42px)}
+  .cta-p{font-size:14px}
+  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
+}
+.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
+.footer-links{display:flex;gap:2rem;list-style:none}
+.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
+.footer-links a:hover{color:var(--gold-light)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
+</style>
+</head>
+<body>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    
+    <span class="nav-logo-text">
+      <span class="nav-logo-main">Acceler8</span>
+      <span class="nav-logo-sub">Commercial Ltd</span>
+    </span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="results.html" class="active">Results</a></li>
+    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
+  </ul>
+</nav>
+
+<!-- ══ HERO ══ -->
+<section id="hero">
+  <div class="hero-inner">
+    <div>
+      <span class="hero-eyebrow">Track record</span>
+      <h1 class="hero-h">The numbers<br>speak for<br><em>themselves.</em></h1>
+      <div class="hero-rule"></div>
+    </div>
+    <div class="hero-right">
+      <p class="hero-intro">Twenty years of delivering at the most senior levels — across revenue generation, pricing, contract negotiation, procurement and commercial transformation. These are some of the results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ STATS ══ -->
+<section id="stats">
+  <div class="stats-row">
+    <div class="stat reveal">
+      <div class="stat-n">£240m+</div>
+      <div class="stat-l">Sales contracts personally<br>negotiated &amp; closed</div>
+    </div>
+    <div class="stat reveal d1">
+      <div class="stat-n">60%</div>
+      <div class="stat-l">Reduction in time<br>to signature achieved</div>
+    </div>
+    <div class="stat reveal d2">
+      <div class="stat-n">250+</div>
+      <div class="stat-l">Commercial deals personally<br>negotiated &amp; closed</div>
+    </div>
+    <div class="stat reveal d3">
+      <div class="stat-n">20 yrs</div>
+      <div class="stat-l">Senior commercial<br>experience across sectors</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ REVENUE & GROWTH ══ -->
+<section class="results-section light" id="revenue">
+  <div class="section-header">
+    <div class="reveal">
+      <span class="section-eye">01 · Revenue &amp; Growth</span>
+      <h2 class="section-h">Driving top-line performance</h2>
+    </div>
+    <p class="section-note reveal d2">Commercial outcomes that move the dial: deals that close quicker, increased and protected margins, revenue that scales.</p>
+  </div>
+  <div class="results-grid">
+
+    <div class="result-card wide reveal">
+      <div class="card-inner">
+        <div>
+          <div class="card-stat">5x</div>
+          <span class="card-stat-label">Revenue growth</span>
+        </div>
+        <div>
+          <div class="card-company"><span class="card-company-name">Aptitude Software</span><span class="card-badge">Fintech SaaS</span></div>
+          <p class="card-body">Grew revenues fivefold by personally negotiating <strong>90 net-new client deals</strong> worth over <strong>£120m TCV</strong> as Senior Commercial Director. Built and led the global commercial function from scratch, establishing the processes, governance and team that made sustained growth possible.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Acceler8 Commercial</span><span class="card-badge">Current</span></div>
+      <div class="card-stat">£15m</div>
+      <span class="card-stat-label">ARR closed for clients</span>
+      <p class="card-body">Led sales negotiations on behalf of clients, closing commercial deals worth approximately <strong>£15m ARR</strong> — across enterprise software agreements and professional services contracts.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">Aptitude Software</span><span class="card-badge">Fintech SaaS</span></div>
+      <div class="card-stat">New<br>markets</div>
+      <span class="card-stat-label">Market entry &amp; expansion</span>
+      <p class="card-body">Revolutionised the sales process and led commercial expansion into new markets and territories — improving deal competitiveness through reduced cost to serve and establishing a Bid Review Committee to align the organisation.</p>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Equifax</span><span class="card-badge">Financial Data</span></div>
+      <div class="card-stat">£100k</div>
+      <span class="card-stat-label">Net-new revenue generated</span>
+      <p class="card-body">Generated <strong>£100k of net-new revenue</strong> from blue-sky commercial initiatives while managing the UK Procurement function — demonstrating the commercial upside that procurement expertise can unlock when applied creatively.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">Brit Insurance</span><span class="card-badge">Insurance</span></div>
+      <div class="card-stat">£515k</div>
+      <span class="card-stat-label">Revenue from divestment</span>
+      <p class="card-body">Commercial programme lead for the divestment of a motor insurance book to a broker — generating <strong>£515k of net-new revenue</strong> alongside £2m in cost savings, and increasing vital cash flow for the business.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ COMMERCIAL OPERATIONS ══ -->
+<section class="results-section cream" id="operations">
+  <div class="section-header">
+    <div class="reveal">
+      <span class="section-eye">02 · Commercial Operations</span>
+      <h2 class="section-h">Building the infrastructure that enables growth</h2>
+    </div>
+    <p class="section-note reveal d2">Pricing, contracts, playbooks and commercial processes designed to accelerate deals and protect margin.</p>
+  </div>
+  <div class="results-grid">
+
+    <div class="result-card wide reveal">
+      <div class="card-inner">
+        <div>
+          <div class="card-stat">60%</div>
+          <span class="card-stat-label">Faster to signature</span>
+        </div>
+        <div>
+          <div class="card-company"><span class="card-company-name">Aptitude Software</span><span class="card-badge">Fintech SaaS</span></div>
+          <p class="card-body">Reduced average time to signature by <strong>60%</strong> — from approximately four months to six weeks — through the design and implementation of a bespoke <strong>Commercial Playbook</strong>. The playbook aligned every negotiation to Board-approved parameters, gave the sales team a clear framework to operate within, and removed the bottlenecks that had been slowing deal closure.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Aptitude Software</span><span class="card-badge">Fintech SaaS</span></div>
+      <div class="card-stat">Multi-<br>product</div>
+      <span class="card-stat-label">SaaS pricing &amp; launches</span>
+      <p class="card-body">Programme Director for multiple new SaaS solution launches — owning end-to-end cost review, pricing model design and accompanying contractual terms. <strong>Owner of the price book and deal margin management</strong> across the portfolio.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">Acceler8 Commercial</span><span class="card-badge">Client Work</span></div>
+      <div class="card-stat">$m+</div>
+      <span class="card-stat-label">Oracle ULA savings</span>
+      <p class="card-body">Negotiated an Oracle Unlimited Licence Agreement for a <strong>FTSE 250 client</strong>, delivering multi-million dollar savings, reducing cost to serve, improving profitability and providing risk assurance over the existing and future licence estate.</p>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Aptitude Software</span><span class="card-badge">Fintech SaaS</span></div>
+      <div class="card-stat">M&A</div>
+      <span class="card-stat-label">Acquisition commercial lead</span>
+      <p class="card-body">Commercial lead for multiple company acquisitions — focused on <strong>maximising investment return</strong>, assessing pre-signature risk and minimising post-signature exposure. Integrated commercial due diligence with strategic investment objectives.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">Capgemini</span><span class="card-badge">Consulting</span></div>
+      <div class="card-stat">Gov.</div>
+      <span class="card-stat-label">Parliamentary White Paper</span>
+      <p class="card-body">Delivered a national and local government savings Parliamentary White Paper to the <strong>Office of the Deputy Prime Minister</strong>, following a successful roadshow of key themes to local government Heads and business CEOs across nine English regions.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ COST & PROCUREMENT ══ -->
+<section class="results-section dark" id="procurement">
+  <div class="section-header">
+    <div class="reveal">
+      <span class="section-eye">03 · Cost &amp; Procurement</span>
+      <h2 class="section-h-light">Protecting the bottom line</h2>
+    </div>
+    <p class="section-note reveal d2" style="color:rgba(255,255,255,.4)">Savings delivered, targets exceeded and procurement functions transformed across global organisations.</p>
+  </div>
+  <div class="results-grid">
+
+    <div class="result-card wide reveal">
+      <div class="card-inner">
+        <div>
+          <div class="card-stat">430%</div>
+          <span class="card-stat-label">Of savings target</span>
+        </div>
+        <div>
+          <div class="card-company"><span class="card-company-name">Equifax</span><span class="card-badge">Financial Data</span></div>
+          <p class="card-body">Delivered <strong>£850k+ in cost savings</strong> — approximately 430% of the annual target — reporting directly to the UK CFO. Simultaneously generated £100k of net-new revenue through blue-sky initiatives, demonstrating that a well-run procurement function is a commercial asset, not just a cost centre.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Brit Insurance</span><span class="card-badge">Insurance</span></div>
+      <div class="card-stat">4yrs</div>
+      <span class="card-stat-label">Savings targets exceeded</span>
+      <p class="card-body">Beat savings targets four years running — by 27%, 86%, 116% and 74% respectively. Delivered alongside a multi-year BPO/ITO outsource deal, supply base rationalisation and spend optimisation programmes.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">GSK</span><span class="card-badge">Pharma / Global</span></div>
+      <div class="card-stat">$12B</div>
+      <span class="card-stat-label">Working capital programme</span>
+      <p class="card-body">Programme lead for a multi-year, multi-business unit <strong>$12B Working Capital initiative</strong> — one of the most complex commercial transformation programmes in the pharmaceutical sector. Also served as Chief of Staff to the R&D Procurement VP.</p>
+    </div>
+
+    <div class="result-card reveal d1">
+      <div class="card-company"><span class="card-company-name">Mars</span><span class="card-badge">Global FMCG</span></div>
+      <div class="card-stat">$10B</div>
+      <span class="card-stat-label">Standard payment terms</span>
+      <p class="card-body">Programme lead for a <strong>$10B Standard Payment Terms</strong> initiative and Commercial Performance Management for a £600m three-year savings target. Assumed additional role of Chief of Staff to the VP of Indirect Commercial.</p>
+    </div>
+
+    <div class="result-card reveal d2">
+      <div class="card-company"><span class="card-company-name">Brit Insurance</span><span class="card-badge">Insurance</span></div>
+      <div class="card-stat">BPO</div>
+      <span class="card-stat-label">Major outsource deal</span>
+      <p class="card-body">Commercial programme lead for a <strong>multi-year BPO/ITO outsource deal</strong> — managing the full commercial lifecycle from initial scoping through supplier selection, negotiation and contract execution to deliver sustained cost savings and process efficiencies.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CLIENTS ══ -->
+<section id="clients">
+  <div class="clients-inner">
+    <span class="section-eye reveal">Pedigree</span>
+    <h2 class="section-h reveal d1">Experience at the highest levels</h2>
+    <div class="clients-grid reveal d2">
+      <div class="client-cell">
+        <span class="client-name">Mars</span>
+        <span class="client-sector">Global FMCG</span>
+      </div>
+      <div class="client-cell">
+        <span class="client-name">GSK</span>
+        <span class="client-sector">Pharma / Global</span>
+      </div>
+      <div class="client-cell">
+        <span class="client-name">Aptitude</span>
+        <span class="client-sector">Fintech SaaS</span>
+      </div>
+      <div class="client-cell">
+        <span class="client-name">Equifax</span>
+        <span class="client-sector">Financial Data</span>
+      </div>
+      <div class="client-cell">
+        <span class="client-name">Brit</span>
+        <span class="client-sector">Insurance</span>
+      </div>
+      <div class="client-cell">
+        <span class="client-name">Capgemini</span>
+        <span class="client-sector">Consulting</span>
+      </div>
+    </div>
+    <p class="clients-note reveal d3">Logos available on request · used for identification purposes only</p>
+  </div>
+</section>
+
+<!-- ══ CTA ══ -->
+<section id="cta">
+  <div class="cta-inner">
+    <span class="cta-eye reveal">Add your name to this list</span>
+    <h2 class="cta-h reveal d1">Ready to see what<br><em>Acceler8 can deliver?</em></h2>
+    <p class="cta-p reveal d2">Every business is different. Tell us where your commercial performance is falling short and we will have an honest conversation about what is possible — and how quickly.</p>
+    <a href="contact.html" class="btn-gold reveal d3">Start the Conversation</a><br>
+    <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="footer-in">
+    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+    <ul class="footer-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="results.html">Results</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+    </ul>
+  </div>
+</footer>
+
+<script>
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}});
+},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
+reveals.forEach(el=>observer.observe(el));
+</script>
+</body>
+</html>
