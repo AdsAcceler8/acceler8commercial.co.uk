@@ -1,464 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Acceler8 Commercial Ltd — Commercial Consultancy</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{
-  --navy:#1C2D4F;--navy-deep:#0F1B31;--navy-mid:#243560;
-  --gold:#C49A3C;--gold-light:#D4AF62;--gold-pale:#F0E4C4;
-  --cream:#F8F7F4;--white:#fff;
-  --text-navy:#1C2D4F;--text-mid:#4A5A6A;--text-light:#7A8A9A;
-}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text-navy);overflow-x:hidden}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Acceler8 Commercial — B2B commercial consultancy for fintech and software. Revenue growth, deal velocity, pricing strategy and contract negotiation.">
+  <title>Acceler8 Commercial Ltd — Commercial Consultancy</title>
 
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;transition:background .4s,box-shadow .4s}
-nav.scrolled{background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
-.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
-.nav-links a:hover{color:var(--gold-light)}
-.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
-.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-/* ── HERO ── */
-#hero{min-height:100vh;background:var(--navy-deep);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:8rem 3rem 5rem}
-#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
-#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.hero-content{text-align:center;max-width:960px;position:relative;z-index:1}
-.hero-eyebrow{font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp .8s .2s ease forwards}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(56px,9vw,104px);font-weight:600;line-height:.95;color:#fff;letter-spacing:-.02em;margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .4s ease forwards}
-.hero-title em{font-style:italic;color:var(--gold)}
-.hero-rule{width:56px;height:1px;background:var(--gold);margin:0 auto 1.75rem;opacity:0;animation:fadeUp .8s .6s ease forwards}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.4vw,26px);font-weight:300;font-style:italic;color:rgba(255,255,255,.65);line-height:1.65;max-width:700px;margin:0 auto 2.75rem;opacity:0;animation:fadeUp .8s .75s ease forwards}
-.hero-btns{display:flex;align-items:center;justify-content:center;gap:1.25rem;flex-wrap:wrap;opacity:0;animation:fadeUp .8s .95s ease forwards}
-.btn-gold{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .2s}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
-.btn-ghost{display:inline-block;padding:.9rem 2.5rem;background:transparent;color:rgba(255,255,255,.75);text-decoration:none;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid rgba(255,255,255,.25);border-radius:2px;transition:border-color .2s,color .2s}
-.btn-ghost:hover{border-color:rgba(255,255,255,.6);color:#fff}
-.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;animation:fadeIn 1s 1.8s ease forwards}
-.scroll-hint span{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.3)}
-.scroll-line{width:1px;height:44px;background:linear-gradient(to bottom,var(--gold),transparent);animation:pulse 2s ease infinite}
-
-/* ── LOGO SVG ── */
-.logo-svg{width:44px;height:44px}
-
-/* ── QUESTIONS ── */
-#questions{background:var(--navy);padding:6rem 3rem;position:relative}
-#questions::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.qs-header{text-align:center;margin-bottom:4.5rem}
-.section-eye{display:block;font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.section-h-light{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4.5vw,48px);font-weight:400;color:#fff;line-height:1.2}
-.qs-grid{max-width:1040px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr}
-.q-item{padding:2.75rem 3rem;border-bottom:1px solid rgba(255,255,255,.07);border-right:1px solid rgba(255,255,255,.07);transition:background .3s}
-.q-item:hover{background:rgba(196,154,60,.05)}
-.q-item:nth-child(even){border-right:none}
-.q-item.q-last{grid-column:1/-1;border-bottom:none;border-right:none;max-width:580px;margin:0 auto;text-align:center;padding:3rem 2rem 0}
-.q-num{display:block;font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;color:var(--gold);letter-spacing:.15em;margin-bottom:.75rem}
-.q-text{font-family:'Cormorant Garamond',serif;font-size:clamp(20px,2.2vw,27px);font-weight:400;font-style:italic;color:rgba(255,255,255,.88);line-height:1.45}
-.q-tag{display:inline-block;margin-top:1rem;font-size:10px;font-weight:400;letter-spacing:.15em;text-transform:uppercase;color:rgba(196,154,60,.55)}
-
-/* ── PIVOT ── */
-#pivot{background:var(--cream);padding:5.5rem 3rem;text-align:center;position:relative}
-.pivot-line{font-family:'Cormorant Garamond',serif;font-size:clamp(26px,3.8vw,46px);font-weight:500;color:var(--navy);line-height:1.35;max-width:820px;margin:0 auto 1.5rem}
-.pivot-line em{font-style:italic;color:var(--gold)}
-.pivot-sub{font-size:15.5px;font-weight:300;color:var(--text-mid);max-width:600px;margin:0 auto;line-height:1.75}
-
-/* ── ABOUT ── */
-#about{background:#fff;padding:6rem 3rem}
-.about-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:center}
-.about-label{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.about-h{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,3.8vw,46px);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:1.5rem}
-.about-h em{font-style:italic;color:var(--gold)}
-.about-p{font-size:15px;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:1.25rem}
-.about-p strong{color:var(--navy);font-weight:500}
-.creds{margin-top:2rem;display:flex;flex-direction:column;gap:.6rem}
-.cred{display:flex;align-items:center;gap:.85rem;font-size:13px;color:var(--text-mid)}
-.cred::before{content:'';width:22px;height:1px;background:var(--gold);flex-shrink:0}
-.usp-cards{display:flex;flex-direction:column;gap:1.25rem}
-.usp{background:var(--cream);border-left:3px solid var(--gold);padding:1.5rem 1.75rem;border-radius:0 2px 2px 0}
-.usp h4{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--navy);margin-bottom:.45rem}
-.usp p{font-size:13.5px;line-height:1.7;color:var(--text-mid);font-weight:300}
-
-/* ── STATS ── */
-#stats{background:var(--navy-deep);padding:5rem 3rem;position:relative}
-#stats::before,#stats::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-#stats::before{top:0}#stats::after{bottom:0}
-.stats-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:2rem;text-align:center;border-right:1px solid rgba(255,255,255,.1)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:clamp(38px,5vw,66px);font-weight:600;color:var(--gold);line-height:1;margin-bottom:.5rem}
-.stat-l{font-size:11.5px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.55);line-height:1.5}
-
-/* ── SERVICES ── */
-#services{background:var(--cream);padding:6.5rem 3rem}
-.svc-header{text-align:center;margin-bottom:4rem}
-.section-h-dark{font-family:'Cormorant Garamond',serif;font-size:clamp(30px,4.5vw,50px);font-weight:400;color:var(--navy);line-height:1.2;margin-top:.5rem}
-.svc-sub{font-size:15.5px;font-weight:300;color:var(--text-mid);max-width:580px;margin:1rem auto 0;line-height:1.7}
-.svc-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
-.svc-card{background:#fff;border:1px solid rgba(28,45,79,.1);padding:2.75rem;border-radius:2px;position:relative;overflow:hidden;transition:transform .3s,box-shadow .3s,border-color .3s}
-.svc-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .4s}
-.svc-card:hover{transform:translateY(-3px);box-shadow:0 12px 48px rgba(28,45,79,.1);border-color:rgba(196,154,60,.25)}
-.svc-card:hover::before{height:100%}
-.svc-num{font-family:'Cormorant Garamond',serif;font-size:60px;font-weight:300;color:rgba(196,154,60,.12);line-height:1;margin-bottom:.25rem}
-.svc-title{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--navy);margin-bottom:1rem;line-height:1.2}
-.svc-body{font-size:14px;line-height:1.85;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem}
-.svc-tags{display:flex;flex-wrap:wrap;gap:.5rem}
-.tag{font-size:9.5px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,.4);padding:.25rem .7rem;border-radius:2px}
-
-/* ── CLIENTS ── */
-#clients{background:#fff;padding:5rem 3rem;text-align:center}
-.clients-wrap{max-width:900px;margin:0 auto}
-.clients-note{font-size:13px;font-weight:300;color:var(--text-light);margin-top:2.5rem;font-style:italic}
-.clients-row{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:1rem 3rem;margin-top:2.5rem}
-.client-n{font-family:'DM Sans',sans-serif;font-size:14.5px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:rgba(28,45,79,.28);transition:color .3s;cursor:default}
-.client-n:hover{color:var(--navy)}
-
-/* ── CTA ── */
-#cta{background:var(--navy);padding:6.5rem 3rem;text-align:center;position:relative;overflow:hidden}
-#cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.04) 1px,transparent 1px);background-size:64px 64px}
-.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,60px);font-weight:500;color:#fff;line-height:1.25;margin-bottom:1rem}
-.cta-h em{font-style:italic;color:var(--gold)}
-.cta-p{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:2.5rem}
-.cta-email{display:inline-block;font-size:13px;letter-spacing:.1em;color:var(--gold-light);text-decoration:none;margin-top:1.25rem;transition:color .2s}
-.cta-email:hover{color:#fff}
-
-/* ── FOOTER ── */
-footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
-.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-
-/* Mobile Responsive */
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-logo-text{display:none}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:11px}
-  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
-  .hero-h{font-size:clamp(32px,6vw,56px);line-height:1.1}
-  .hero-sub{font-size:14px}
-  .svc-grid{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
-  .svc-card{padding:1.5rem}
-  .svc-num{font-size:2rem}
-  .svc-title{font-size:18px}
-  .svc-body{font-size:13px}
-  .svc-tags{gap:0.5rem;flex-wrap:wrap}
-  .tag{font-size:11px;padding:0.4rem 0.8rem}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem}
-  .stat-num{font-size:2.5rem}
-  .stat-label{font-size:11px}
-  .svc-header{padding:1.5rem}
-  .section-h-dark{font-size:clamp(24px,5vw,40px)}
-  .section-eye{font-size:12px}
-  .client-grid{grid-template-columns:1fr;gap:1rem;padding:1.5rem}
-  .client-logo{height:40px}
-  .cta-inner{padding:2rem 1.5rem}
-  .cta-h{font-size:clamp(24px,5vw,42px)}
-  .cta-p{font-size:14px}
-  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
-}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
-.footer-links{display:flex;gap:2rem;list-style:none}
-.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
-.footer-links a:hover{color:var(--gold-light)}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-@keyframes pulse{0%,100%{opacity:.5}50%{opacity:1}}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-</style>
+  <!-- External Stylesheet - IMPROVED: Now shared across all pages -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-<!-- ══ NAV ══ -->
-<nav id="nav">
-  <a href="#hero" class="nav-logo">
-    <!-- A8 logo mark SVG -->
-    
-    <span class="nav-logo-text">
-      <span class="nav-logo-main">Acceler8</span>
-      <span class="nav-logo-sub">Commercial Ltd</span>
-    </span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="results.html">Results</a></li>
-    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
-  </ul>
-</nav>
+  <!-- Skip to Main Content Link - ACCESSIBILITY IMPROVEMENT -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ══ HERO ══ -->
-<section id="hero">
-  <div class="hero-content">
-    <p class="hero-eyebrow">B2B Commercial Consultancy · Fintech & Software</p>
-    <h1 class="hero-title">Commercial<br><em>Accelerated.</em></h1>
-    <div class="hero-rule"></div>
-    <p class="hero-sub">Senior commercial expertise — from both sides of the table. We grow revenues, protect margins, sharpen deals and build the commercial infrastructure that lets ambitious businesses scale.</p>
-    <div class="hero-btns">
-      <a href="#services" class="btn-gold">Our Services</a>
-      <a href="#cta" class="btn-ghost">Start a Conversation</a>
-    </div>
-  </div>
-  <div class="scroll-hint">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
+  <!-- ══ NAVIGATION ══ -->
+  <nav id="nav" class="closed">
+    <a href="#hero" class="nav-logo">
+      <span class="nav-logo-text">
+        <span class="nav-logo-main">Acceler8</span>
+        <span class="nav-logo-sub">Commercial Ltd</span>
+      </span>
+    </a>
 
-<!-- ══ QUESTIONS ══ -->
-<section id="questions">
-  <div class="qs-header reveal">
-    <span class="section-eye">Sound familiar?</span>
-    <h2 class="section-h-light">Seven questions every ambitious B2B leader should ask</h2>
-  </div>
-  <div class="qs-grid">
+    <!-- Mobile Menu Toggle - NEW -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
 
-    <div class="q-item reveal d1">
-      <span class="q-num">01</span>
-      <p class="q-text">Are your deals taking months to close when they should take weeks?</p>
-      <span class="q-tag">Deal Velocity</span>
-    </div>
-
-    <div class="q-item reveal d2">
-      <span class="q-num">02</span>
-      <p class="q-text">Is revenue growing — but your margins telling a very different story?</p>
-      <span class="q-tag">Revenue &amp; Margin</span>
-    </div>
-
-    <div class="q-item reveal d1">
-      <span class="q-num">03</span>
-      <p class="q-text">Do you know if your pricing model is maximising what the market will pay?</p>
-      <span class="q-tag">Pricing Strategy</span>
-    </div>
-
-    <div class="q-item reveal d2">
-      <span class="q-num">04</span>
-      <p class="q-text">Are you launching products without a commercial architecture built to scale?</p>
-      <span class="q-tag">Go-To-Market</span>
-    </div>
-
-    <div class="q-item reveal d1">
-      <span class="q-num">05</span>
-      <p class="q-text">Are contract negotiations costing you deals — or exposing you to unacceptable risk?</p>
-      <span class="q-tag">Legal &amp; Commercial</span>
-    </div>
-
-    <div class="q-item reveal d2">
-      <span class="q-num">06</span>
-      <p class="q-text">Do your contracts truly protect your business — or do they just tick a box?</p>
-      <span class="q-tag">Risk &amp; Governance</span>
-    </div>
-
-    <div class="q-item q-last reveal">
-      <span class="q-num">07</span>
-      <p class="q-text">Does your business lack the commercial infrastructure — pricing, RevOps, bid review — it needs to compete and scale?</p>
-      <span class="q-tag">Commercial Function</span>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ PIVOT ══ -->
-<section id="pivot">
-  <p class="pivot-line reveal">If you answered yes to any of these,<br><em>Acceler8 Commercial was built for you.</em></p>
-  <p class="pivot-sub reveal d2">We bring twenty years of senior commercial, procurement and contract negotiation experience — from FTSE-listed multinationals to high-growth Fintech — to help you close more, protect more and scale faster.</p>
-</section>
-
-<!-- ══ ABOUT ══ -->
-<section id="about">
-  <div class="about-wrap">
-    <div>
-      <span class="about-label reveal">About Acceler8</span>
-      <h2 class="about-h reveal d1">The advisor who has sat on <em>both sides</em> of the table</h2>
-      <p class="about-p reveal d2">Acceler8 Commercial was built on a simple observation: most commercial consultants come from one background — sales or procurement. Rarely both.</p>
-      <p class="about-p reveal d2">Founder <strong>Adam Solley</strong> has spent twenty years at the most senior levels of each. He has built and led Procurement and Commercial functions from the ground up, and personally negotiated and closed over <strong>250 commercial sales deals</strong> worth more than <strong>£240m TCV</strong> — across enterprise software, professional services and partnership agreements.</p>
-      <p class="about-p reveal d3">That dual perspective shapes everything Acceler8 does. Because understanding how buyers think, what they scrutinise, and where commercial friction originates isn't theory — it comes from having sat in both chairs.</p>
-    </div>
-    <div class="usp-cards reveal d2">
-      <div class="usp">
-        <h4>Calm under pressure</h4>
-        <p>When negotiations stall and stakes are high, Adam brings a steady, solutions-first approach that unlocks deals others walk away from.</p>
-      </div>
-      <div class="usp">
-        <h4>Procurement &amp; sales — both sides</h4>
-        <p>A split career spanning procurement strategy, bid leadership and commercial director roles gives Acceler8 a perspective no pure-play sales consultant can match.</p>
-      </div>
-      <div class="usp">
-        <h4>Embedded, not advisory</h4>
-        <p>We work as an extension of your team — building processes, hiring into roles, drafting contracts, and leading negotiations alongside you.</p>
-      </div>
-      <div class="usp">
-        <h4>Fintech &amp; B2B SaaS specialism</h4>
-        <p>Deep expertise in the commercial dynamics of software businesses — from seed-stage pricing models through to enterprise deal structures.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ STATS ══ -->
-<section id="stats">
-  <div class="stats-row">
-    <div class="stat reveal">
-      <div class="stat-n">£240m+</div>
-      <div class="stat-l">Sales contracts personally<br>negotiated &amp; closed</div>
-    </div>
-    <div class="stat reveal d1">
-      <div class="stat-n">60%</div>
-      <div class="stat-l">Reduction in time<br>to signature achieved</div>
-    </div>
-    <div class="stat reveal d2">
-      <div class="stat-n">250+</div>
-      <div class="stat-l">Commercial deals personally<br>negotiated &amp; closed</div>
-    </div>
-    <div class="stat reveal d3">
-      <div class="stat-n">20 yrs</div>
-      <div class="stat-l">Senior commercial<br>experience across sectors</div>
-    </div>
-  </div>
-</section>
-
-<!-- ══ SERVICES ══ -->
-<section id="services">
-  <div class="svc-header">
-    <span class="section-eye reveal">What we do</span>
-    <h2 class="section-h-dark reveal d1">Four ways Acceler8 drives<br>commercial performance</h2>
-    <p class="svc-sub reveal d2">Whether you need immediate deal support, a new pricing architecture, stronger contracts or a commercial function built from the ground up — we deliver.</p>
-  </div>
-  <div class="svc-grid">
-
-    <div class="svc-card reveal">
-      <a href="services.html#s01" style="text-decoration:none;color:inherit;display:block;">
-        <div class="svc-num">01</div>
-        <h3 class="svc-title">Commercial Leadership</h3>
-        <p class="svc-body">Interim or fractional senior commercial leadership for businesses that need to grow revenues, reduce costs and accelerate speed to market. We embed into your team, align your sales and commercial operations, and drive measurable outcomes — fast.</p>
-        <div class="svc-tags">
-          <span class="tag">Revenue Growth</span>
-          <span class="tag">Cost Reduction</span>
-          <span class="tag">Deal Velocity</span>
-          <span class="tag">Interim Leadership</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="svc-card reveal d1">
-      <a href="services.html#s02" style="text-decoration:none;color:inherit;display:block;">
-        <div class="svc-num">02</div>
-        <h3 class="svc-title">Pricing Strategy</h3>
-        <p class="svc-body">End-to-end design and implementation of SaaS, solutions and services pricing — from product test through launch to steady state. We build the price books, deal margin frameworks and approval processes that protect your profitability at scale.</p>
-        <div class="svc-tags">
-          <span class="tag">SaaS Pricing</span>
-          <span class="tag">Solutions Pricing</span>
-          <span class="tag">Price Books</span>
-          <span class="tag">Margin Management</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="svc-card reveal d1">
-      <a href="services.html#s03" style="text-decoration:none;color:inherit;display:block;">
-        <div class="svc-num">03</div>
-        <h3 class="svc-title">Legal &amp; Commercial</h3>
-        <p class="svc-body">Most businesses put lawyers in the room to negotiate contracts. Lawyers are trained to win every point — which slows deals, poisons relationships and kills commercial momentum. Acceler8 takes a different approach.</p>
-        <p class="svc-body">We draft, review and negotiate complex commercial contracts — MSAs, SaaS agreements, partnership and supplier terms — end-to-end, without legal counsel in the room. Backed by Board-approved parameters and a structured playbook, we get deals done at pace, the right way, with risk managed and both sides walking away ready to do business.</p>
-        <div class="svc-tags">
-          <span class="tag">Contract Drafting</span>
-          <span class="tag">Negotiation</span>
-          <span class="tag">Commercial Playbooks</span>
-          <span class="tag">Risk Management</span>
-        </div>
-      </a>
-    </div>
-
-    <div class="svc-card reveal d2">
-      <a href="services.html#s04" style="text-decoration:none;color:inherit;display:block;">
-        <div class="svc-num">04</div>
-        <h3 class="svc-title">Commercial Function Build</h3>
-        <p class="svc-body">Many scaling businesses lack the commercial infrastructure needed to compete — no formal pricing process, no bid review, no RevOps. We design and implement the entire function: structure, process, governance and team, tailored to your stage and sector.</p>
-        <div class="svc-tags">
-          <span class="tag">RevOps</span>
-          <span class="tag">Bid Review</span>
-          <span class="tag">Commercial Ops</span>
-          <span class="tag">Org Design</span>
-        </div>
-      </a>
-    </div>
-
-  </div>
-</section>
-
-<!-- ══ CLIENTS ══ -->
-<section id="clients">
-  <div class="clients-wrap">
-    <span class="section-eye reveal">Pedigree</span>
-    <h2 class="section-h-dark reveal d1">Built on experience at the highest levels</h2>
-    <div class="clients-row reveal d2">
-      <span class="client-n">Mars</span>
-      <span class="client-n">GSK</span>
-      <span class="client-n">Aptitude</span>
-      <span class="client-n">Equifax</span>
-      <span class="client-n">Brit Insurance</span>
-      <span class="client-n">Capgemini</span>
-    </div>
-    <p class="clients-note reveal d3">20 years of senior commercial roles across global enterprise, Fintech and professional services.</p>
-  </div>
-</section>
-
-<!-- ══ CTA ══ -->
-<section id="cta">
-  <div class="cta-inner">
-    <span class="section-eye reveal">Get in touch</span>
-    <h2 class="cta-h reveal d1">Ready to <em>accelerate</em><br>your commercial performance?</h2>
-    <p class="cta-p reveal d2">Tell us where your commercial challenges are. Whether it's a deal on the table, a pricing model that needs rebuilding, or a commercial function that doesn't yet exist — we'll have a straight conversation about how we can help.</p>
-    <a href="contact.html" class="btn-gold reveal d3">Start the Conversation</a>
-    <br>
-    <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
-  </div>
-</section>
-
-<!-- ══ FOOTER ══ -->
-<footer>
-  <div class="footer-in">
-    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
-    <ul class="footer-links">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="results.html">Results</a></li>
-      <li><a href="#cta">Contact</a></li>
-      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+      <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
     </ul>
-  </div>
-</footer>
+  </nav>
 
-<script>
-// Nav scroll effect
-const nav = document.getElementById('nav');
-window.addEventListener('scroll', () => {
-  nav.classList.toggle('scrolled', window.scrollY > 60);
-});
+  <!-- ══ HERO ══ -->
+  <section id="hero">
+    <div class="hero-content">
+      <p class="hero-eyebrow">B2B Commercial Consultancy · Fintech & Software</p>
+      <h1 class="hero-title">Commercial<br><em>Accelerated.</em></h1>
+      <div class="hero-rule"></div>
+      <p class="hero-sub">Senior commercial expertise — from both sides of the table. We grow revenues, protect margins, sharpen deals and build the commercial infrastructure that lets ambitious businesses scale.</p>
+      <div class="hero-btns">
+        <a href="#services" class="btn-gold">Our Services</a>
+        <a href="#cta" class="btn-ghost">Start a Conversation</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
 
-// Scroll reveal
-const reveals = document.querySelectorAll('.reveal');
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) {
-      e.target.classList.add('in');
-      observer.unobserve(e.target);
-    }
-  });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-reveals.forEach(el => observer.observe(el));
-</script>
+  <!-- ══ MAIN CONTENT ══ -->
+  <main id="main-content">
+
+    <!-- ══ QUESTIONS ══ -->
+    <section id="questions">
+      <div class="qs-header reveal">
+        <span class="section-eye">Sound familiar?</span>
+        <h2 class="section-h-light">Seven questions every ambitious B2B leader should ask</h2>
+      </div>
+      <div class="qs-grid">
+
+        <div class="q-item reveal d1">
+          <span class="q-num">01</span>
+          <p class="q-text">Are your deals taking months to close when they should take weeks?</p>
+          <span class="q-tag">Deal Velocity</span>
+        </div>
+
+        <div class="q-item reveal d2">
+          <span class="q-num">02</span>
+          <p class="q-text">Is revenue growing — but your margins telling a very different story?</p>
+          <span class="q-tag">Revenue &amp; Margin</span>
+        </div>
+
+        <div class="q-item reveal d1">
+          <span class="q-num">03</span>
+          <p class="q-text">Do you know if your pricing model is maximising what the market will pay?</p>
+          <span class="q-tag">Pricing Strategy</span>
+        </div>
+
+        <div class="q-item reveal d2">
+          <span class="q-num">04</span>
+          <p class="q-text">Are you launching products without a commercial architecture built to scale?</p>
+          <span class="q-tag">Go-To-Market</span>
+        </div>
+
+        <div class="q-item reveal d1">
+          <span class="q-num">05</span>
+          <p class="q-text">Are contract negotiations costing you deals — or exposing you to unacceptable risk?</p>
+          <span class="q-tag">Legal &amp; Commercial</span>
+        </div>
+
+        <div class="q-item reveal d2">
+          <span class="q-num">06</span>
+          <p class="q-text">Do your contracts truly protect your business — or do they just tick a box?</p>
+          <span class="q-tag">Risk &amp; Governance</span>
+        </div>
+
+        <div class="q-item q-last reveal">
+          <span class="q-num">07</span>
+          <p class="q-text">Does your business lack the commercial infrastructure — pricing, RevOps, bid review — it needs to compete and scale?</p>
+          <span class="q-tag">Commercial Function</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ══ PIVOT ══ -->
+    <section id="pivot">
+      <p class="pivot-line reveal">If you answered yes to any of these,<br><em>Acceler8 Commercial was built for you.</em></p>
+      <p class="pivot-sub reveal d2">We bring twenty years of senior commercial, procurement and contract negotiation experience — from FTSE-listed multinationals to high-growth Fintech — to help you close more, protect more and scale faster.</p>
+    </section>
+
+    <!-- ══ ABOUT ══ -->
+    <section id="about">
+      <div class="about-wrap">
+        <div>
+          <span class="about-label reveal">About Acceler8</span>
+          <h2 class="about-h reveal d1">The advisor who has sat on <em>both sides</em> of the table</h2>
+          <p class="about-p reveal d2">Acceler8 Commercial was built on a simple observation: most commercial consultants come from one background — sales or procurement. Rarely both.</p>
+          <p class="about-p reveal d2">Founder <strong>Adam Solley</strong> has spent twenty years at the most senior levels of each. He has built and led Procurement and Commercial functions from the ground up, and personally negotiated and closed over <strong>250 commercial sales deals</strong> worth more than <strong>£240m TCV</strong> — across enterprise software, professional services and partnership agreements.</p>
+          <p class="about-p reveal d3">That dual perspective shapes everything Acceler8 does. Because understanding how buyers think, what they scrutinise, and where commercial friction originates isn't theory — it comes from having sat in both chairs.</p>
+        </div>
+        <div class="usp-cards reveal d2">
+          <div class="usp">
+            <h4>Calm under pressure</h4>
+            <p>When negotiations stall and stakes are high, Adam brings a steady, solutions-first approach that unlocks deals others walk away from.</p>
+          </div>
+          <div class="usp">
+            <h4>Procurement &amp; sales — both sides</h4>
+            <p>A split career spanning procurement strategy, bid leadership and commercial director roles gives Acceler8 a perspective no pure-play sales consultant can match.</p>
+          </div>
+          <div class="usp">
+            <h4>Embedded, not advisory</h4>
+            <p>We work as an extension of your team — building processes, hiring into roles, drafting contracts, and leading negotiations alongside you.</p>
+          </div>
+          <div class="usp">
+            <h4>Fintech &amp; B2B SaaS specialism</h4>
+            <p>Deep expertise in the commercial dynamics of software businesses — from seed-stage pricing models through to enterprise deal structures.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ STATS ══ -->
+    <section id="stats">
+      <div class="stats-row">
+        <div class="stat reveal">
+          <div class="stat-n">£240m+</div>
+          <div class="stat-l">Sales contracts personally<br>negotiated &amp; closed</div>
+        </div>
+        <div class="stat reveal d1">
+          <div class="stat-n">60%</div>
+          <div class="stat-l">Reduction in time<br>to signature achieved</div>
+        </div>
+        <div class="stat reveal d2">
+          <div class="stat-n">250+</div>
+          <div class="stat-l">Commercial deals personally<br>negotiated &amp; closed</div>
+        </div>
+        <div class="stat reveal d3">
+          <div class="stat-n">20 yrs</div>
+          <div class="stat-l">Senior commercial<br>experience across sectors</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══ SERVICES ══ -->
+    <section id="services">
+      <div class="svc-header">
+        <span class="section-eye reveal">What we do</span>
+        <h2 class="section-h-dark reveal d1">Four ways Acceler8 drives<br>commercial performance</h2>
+        <p class="svc-sub reveal d2">Whether you need immediate deal support, a new pricing architecture, stronger contracts or a commercial function built from the ground up — we deliver.</p>
+      </div>
+      <div class="svc-grid">
+
+        <a href="services.html#s01" class="svc-card reveal">
+          <div class="svc-num">01</div>
+          <h3 class="svc-title">Commercial Leadership</h3>
+          <p class="svc-body">Interim or fractional senior commercial leadership for businesses that need to grow revenues, reduce costs and accelerate speed to market. We embed into your team, align your sales and commercial operations, and drive measurable outcomes — fast.</p>
+          <div class="svc-tags">
+            <span class="tag">Revenue Growth</span>
+            <span class="tag">Cost Reduction</span>
+            <span class="tag">Deal Velocity</span>
+            <span class="tag">Interim Leadership</span>
+          </div>
+        </a>
+
+        <a href="services.html#s02" class="svc-card reveal d1">
+          <div class="svc-num">02</div>
+          <h3 class="svc-title">Pricing Strategy</h3>
+          <p class="svc-body">End-to-end design and implementation of SaaS, solutions and services pricing — from product test through launch to steady state. We build the price books, deal margin frameworks and approval processes that protect your profitability at scale.</p>
+          <div class="svc-tags">
+            <span class="tag">SaaS Pricing</span>
+            <span class="tag">Solutions Pricing</span>
+            <span class="tag">Price Books</span>
+            <span class="tag">Margin Management</span>
+          </div>
+        </a>
+
+        <a href="services.html#s03" class="svc-card reveal d1">
+          <div class="svc-num">03</div>
+          <h3 class="svc-title">Legal &amp; Commercial</h3>
+          <p class="svc-body">Most businesses put lawyers in the room to negotiate contracts. Lawyers are trained to win every point — which slows deals, poisons relationships and kills commercial momentum. Acceler8 takes a different approach.</p>
+          <p class="svc-body">We draft, review and negotiate complex commercial contracts — MSAs, SaaS agreements, partnership and supplier terms — end-to-end, without legal counsel in the room. Backed by Board-approved parameters and a structured playbook, we get deals done at pace, the right way, with risk managed and both sides walking away ready to do business.</p>
+          <div class="svc-tags">
+            <span class="tag">Contract Drafting</span>
+            <span class="tag">Negotiation</span>
+            <span class="tag">Commercial Playbooks</span>
+            <span class="tag">Risk Management</span>
+          </div>
+        </a>
+
+        <a href="services.html#s04" class="svc-card reveal d2">
+          <div class="svc-num">04</div>
+          <h3 class="svc-title">Commercial Function Build</h3>
+          <p class="svc-body">Many scaling businesses lack the commercial infrastructure needed to compete — no formal pricing process, no bid review, no RevOps. We design and implement the entire function: structure, process, governance and team, tailored to your stage and sector.</p>
+          <div class="svc-tags">
+            <span class="tag">RevOps</span>
+            <span class="tag">Bid Review</span>
+            <span class="tag">Commercial Ops</span>
+            <span class="tag">Org Design</span>
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ══ CLIENTS ══ -->
+    <section id="clients">
+      <div class="clients-wrap">
+        <span class="section-eye reveal">Pedigree</span>
+        <h2 class="section-h-dark reveal d1">Built on experience at the highest levels</h2>
+        <div class="clients-row reveal d2">
+          <span class="client-n">Mars</span>
+          <span class="client-n">GSK</span>
+          <span class="client-n">Aptitude</span>
+          <span class="client-n">Equifax</span>
+          <span class="client-n">Brit Insurance</span>
+          <span class="client-n">Capgemini</span>
+        </div>
+        <p class="clients-note reveal d3">20 years of senior commercial roles across global enterprise, Fintech and professional services.</p>
+      </div>
+    </section>
+
+    <!-- ══ CTA ══ -->
+    <section id="cta">
+      <div class="cta-inner">
+        <span class="section-eye reveal">Get in touch</span>
+        <h2 class="cta-h reveal d1">Ready to <em>accelerate</em><br>your commercial performance?</h2>
+        <p class="cta-p reveal d2">Tell us where your commercial challenges are. Whether it's a deal on the table, a pricing model that needs rebuilding, or a commercial function that doesn't yet exist — we'll have a straight conversation about how we can help.</p>
+        <a href="contact.html" class="btn-gold reveal d3">Start the Conversation</a>
+        <br>
+        <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-in">
+      <span class="footer-copy">© 2026 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+      <ul class="footer-links">
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- JavaScript - Mobile Menu & Scroll Effects -->
+  <script>
+    // ═══════════════════════════════════════════════════════════════
+    // MOBILE MENU TOGGLE - NEW FEATURE
+    // ═══════════════════════════════════════════════════════════════
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    // Toggle menu on button click
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.contains('open');
+      if (isOpen) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      } else {
+        nav.classList.add('open');
+        nav.classList.remove('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    // Close menu on window resize (when back to desktop)
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // NAV SCROLL EFFECT - ENHANCED
+    // ═══════════════════════════════════════════════════════════════
+    const navElement = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      navElement.classList.toggle('scrolled', window.scrollY > 60);
+    });
+
+    // ═══════════════════════════════════════════════════════════════
+    // SCROLL REVEAL ANIMATION - Intersection Observer
+    // ═══════════════════════════════════════════════════════════════
+    const reveals = document.querySelectorAll('.reveal');
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+
+    // ═══════════════════════════════════════════════════════════════
+    // ACCESSIBILITY: CLOSE MOBILE MENU ON ESCAPE KEY
+    // ═══════════════════════════════════════════════════════════════
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.focus();
+      }
+    });
+  </script>
+
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  

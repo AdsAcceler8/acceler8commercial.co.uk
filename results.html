@@ -1,175 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Results — Acceler8 Commercial Ltd</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1C2D4F;--navy-deep:#0F1B31;--gold:#C49A3C;--gold-light:#D4AF62;--cream:#F8F7F4;--white:#fff;--text-mid:#4A5A6A;--text-light:#7A8A9A;}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
-
-/* ── NAV ── */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
-.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
-.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
-.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
-.logo-svg{width:44px;height:44px}
-
-/* ── HERO ── */
-#hero{min-height:48vh;background:var(--navy-deep);display:flex;align-items:flex-end;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
-#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:flex-end}
-.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;opacity:0;animation:fadeUp .7s .2s ease forwards}
-.hero-h{font-family:'Cormorant Garamond',serif;font-size:clamp(40px,6vw,78px);font-weight:600;line-height:1.05;color:#fff;letter-spacing:-.02em;opacity:0;animation:fadeUp .7s .35s ease forwards}
-.hero-h em{font-style:italic;color:var(--gold)}
-.hero-rule{width:56px;height:1px;background:var(--gold);margin-top:2rem;opacity:0;animation:fadeUp .7s .5s ease forwards}
-.hero-right{opacity:0;animation:fadeUp .7s .5s ease forwards}
-.hero-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(17px,1.8vw,21px);font-weight:300;font-style:italic;color:rgba(255,255,255,.6);line-height:1.75}
-
-/* ── STATS BAR ── */
-#stats{background:var(--navy);position:relative}
-#stats::before,#stats::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-#stats::before{top:0}#stats::after{bottom:0}
-.stats-row{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr)}
-.stat{padding:3rem 2rem;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
-.stat:last-child{border-right:none}
-.stat-n{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5.5vw,72px);font-weight:600;color:var(--gold);line-height:1;margin-bottom:.5rem}
-.stat-l{font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);line-height:1.6}
-
-/* ── SECTION COMMON ── */
-.results-section{padding:6.5rem 3rem;position:relative}
-.results-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.1),transparent)}
-.results-section.light{background:var(--white)}
-.results-section.cream{background:var(--cream)}
-.results-section.dark{background:var(--navy-deep)}
-.results-section.dark::before{background:linear-gradient(90deg,transparent,rgba(196,154,60,.2),transparent)}
-.section-header{max-width:1100px;margin:0 auto 4rem;display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap}
-.section-eye{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.75rem}
-.section-h{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:var(--navy);line-height:1.2}
-.section-h-light{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:#fff;line-height:1.2}
-.section-note{font-size:13.5px;font-weight:300;color:var(--text-light);line-height:1.65;max-width:320px;text-align:right}
-
-/* ── RESULT CARDS ── */
-.results-grid{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.result-card{background:var(--cream);padding:2.25rem;border-radius:2px;border:1px solid rgba(28,45,79,.07);position:relative;overflow:hidden;transition:transform .3s,border-color .3s,box-shadow .3s}
-.result-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:0;background:var(--gold);transition:height .4s ease}
-.result-card:hover{transform:translateY(-4px);border-color:rgba(196,154,60,.25);box-shadow:0 12px 40px rgba(28,45,79,.1)}
-.result-card:hover::before{height:100%}
-.results-section.cream .result-card{background:var(--white)}
-.results-section.dark .result-card{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.08)}
-.results-section.dark .result-card:hover{background:rgba(255,255,255,.07);border-color:rgba(196,154,60,.3)}
-.card-company{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.5rem}
-.card-company-name{font-size:10px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light)}
-.results-section.dark .card-company-name{color:rgba(255,255,255,.35)}
-.card-badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,.35);padding:.2rem .65rem;border-radius:2px}
-.card-stat{font-family:'Cormorant Garamond',serif;font-size:clamp(36px,4.5vw,54px);font-weight:600;color:var(--navy);line-height:1;margin-bottom:.5rem}
-.results-section.dark .card-stat{color:#fff}
-.card-stat-label{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block}
-.card-body{font-size:13.5px;line-height:1.8;color:var(--text-mid);font-weight:300}
-.results-section.dark .card-body{color:rgba(255,255,255,.5)}
-.card-body strong{color:var(--navy);font-weight:500}
-.results-section.dark .card-body strong{color:rgba(255,255,255,.8)}
-
-/* ── WIDE CARD ── */
-.result-card.wide{grid-column:span 2}
-.result-card.wide .card-inner{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:center}
-.result-card.wide .card-stat{font-size:clamp(52px,6vw,80px)}
-
-/* ── CLIENTS ── */
-#clients{background:var(--white);padding:5.5rem 3rem;position:relative}
-#clients::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.1),transparent)}
-.clients-inner{max-width:1100px;margin:0 auto;text-align:center}
-.clients-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:1px;border:1px solid rgba(28,45,79,.07);border-radius:2px;overflow:hidden;margin-top:3rem}
-.client-cell{padding:2.25rem 1.5rem;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.75rem;border-right:1px solid rgba(28,45,79,.07);background:var(--white);transition:background .3s}
-.client-cell:last-child{border-right:none}
-.client-cell:hover{background:var(--cream)}
-.client-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:rgba(28,45,79,.35);transition:color .3s;letter-spacing:.02em}
-.client-cell:hover .client-name{color:var(--navy)}
-.client-sector{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-light)}
-.clients-note{font-size:13px;font-weight:300;color:var(--text-light);margin-top:2rem;font-style:italic}
-
-/* ── CTA ── */
-#cta{background:var(--navy-deep);padding:7rem 3rem;text-align:center;position:relative;overflow:hidden}
-#cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.04) 1px,transparent 1px);background-size:64px 64px}
-#cta::after{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.cta-eye{display:block;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,62px);font-weight:500;color:#fff;line-height:1.2;margin-bottom:1rem}
-.cta-h em{font-style:italic;color:var(--gold)}
-.cta-p{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.6);line-height:1.75;margin-bottom:2.5rem}
-.btn-gold{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .2s}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
-.cta-email{display:inline-block;font-size:13px;letter-spacing:.1em;color:var(--gold-light);text-decoration:none;margin-top:1.25rem;transition:color .2s}
-.cta-email:hover{color:#fff}
-
-/* ── FOOTER ── */
-footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
-.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
-
-/* Mobile Responsive */
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-logo-text{display:none}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:11px}
-  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
-  .hero-h{font-size:clamp(28px,5vw,48px);line-height:1.1}
-  .stats-grid{grid-template-columns:1fr 1fr;gap:1.5rem;padding:1.5rem}
-  .stat-item{padding:1.5rem}
-  .stat-num{font-size:2.5rem}
-  .stat-label{font-size:12px}
-  .section-h-dark{font-size:clamp(24px,5vw,40px)}
-  .section-eye{font-size:12px}
-  .result-card{padding:1.5rem}
-  .card-stat{font-size:2rem}
-  .card-stat-label{font-size:12px}
-  .card-body{font-size:13px;line-height:1.5}
-  .result-grid{grid-template-columns:1fr}
-  .cta-inner{padding:2rem 1.5rem}
-  .cta-h{font-size:clamp(24px,5vw,42px)}
-  .cta-p{font-size:14px}
-  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
-}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
-.footer-links{display:flex;gap:2rem;list-style:none}
-.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
-.footer-links a:hover{color:var(--gold-light)}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}.d5{transition-delay:.5s}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Track record of commercial success: £240m+ in sales contracts negotiated, 60% reduction in time to signature, 250+ deals closed. See what Acceler8 delivers.">
+  <title>Results — Acceler8 Commercial Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
+  <!-- Skip to main content link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
 <!-- ══ NAV ══ -->
-<nav>
+<nav id="nav" class="closed">
   <a href="index.html" class="nav-logo">
-    
     <span class="nav-logo-text">
       <span class="nav-logo-main">Acceler8</span>
       <span class="nav-logo-sub">Commercial Ltd</span>
     </span>
   </a>
+  <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
   <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="services.html">Services</a></li>
-    <li><a href="results.html" class="active">Results</a></li>
+    <li><a href="results.html" class="active" aria-current="page">Results</a></li>
     <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
   </ul>
 </nav>
+
+<!-- ══ MAIN CONTENT ══ -->
+<main id="main-content">
 
 <!-- ══ HERO ══ -->
 <section id="hero">
@@ -418,27 +281,79 @@ footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgb
   </div>
 </section>
 
+</main>
+
 <!-- ══ FOOTER ══ -->
 <footer>
   <div class="footer-in">
-    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+    <span class="footer-copy">© 2026 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
     <ul class="footer-links">
       <li><a href="index.html">Home</a></li>
       <li><a href="about.html">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="results.html">Results</a></li>
       <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
     </ul>
   </div>
 </footer>
 
 <script>
-const reveals=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}});
-},{threshold:0.08,rootMargin:'0px 0px -40px 0px'});
-reveals.forEach(el=>observer.observe(el));
+  // Mobile Menu Toggle
+  const nav = document.getElementById('nav');
+  const menuBtn = document.getElementById('mobile-menu-toggle');
+
+  menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('closed');
+    menuBtn.setAttribute('aria-expanded', nav.classList.contains('closed') ? 'false' : 'true');
+  });
+
+  // Close menu when a link is clicked
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.add('closed');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !nav.classList.contains('closed')) {
+      nav.classList.add('closed');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close menu when window is resized to desktop size
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      nav.classList.add('closed');
+      menuBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Nav scroll effect - add background when scrolled
+  let lastScrollY = 0;
+  window.addEventListener('scroll', () => {
+    lastScrollY = window.scrollY;
+    if (lastScrollY > 40) {
+      nav.style.background = 'linear-gradient(to bottom, rgba(15, 27, 49, 0.98), rgba(15, 27, 49, 0.95))';
+    } else {
+      nav.style.background = 'var(--navy-deep)';
+    }
+  });
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  reveals.forEach(el => observer.observe(el));
 </script>
 </body>
 </html>

@@ -1,349 +1,310 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About — Acceler8 Commercial Ltd</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-:root{--navy:#1C2D4F;--navy-deep:#0F1B31;--gold:#C49A3C;--gold-light:#D4AF62;--cream:#F8F7F4;--text-mid:#4A5A6A;--text-light:#7A8A9A;}
-html{scroll-behavior:smooth}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--navy);overflow-x:hidden}
-nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 3rem;display:flex;align-items:center;justify-content:space-between;background:var(--navy-deep);box-shadow:0 1px 24px rgba(0,0,0,.35)}
-.nav-logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.nav-logo-text{display:flex;flex-direction:column;line-height:1.15}
-.nav-logo-main{font-size:14px;font-weight:500;color:#fff;letter-spacing:.1em;text-transform:uppercase}
-.nav-logo-sub{font-size:8.5px;font-weight:300;color:var(--gold-light);letter-spacing:.2em;text-transform:uppercase}
-.nav-links{display:flex;align-items:center;gap:2.5rem;list-style:none}
-.nav-links a{text-decoration:none;color:rgba(255,255,255,.75);font-size:12.5px;letter-spacing:.06em;transition:color .2s}
-.nav-links a:hover,.nav-links a.active{color:var(--gold-light)}
-.nav-cta{padding:.45rem 1.25rem;border:1px solid var(--gold);color:var(--gold)!important;border-radius:2px;font-size:11px!important;letter-spacing:.12em!important;text-transform:uppercase;transition:background .2s,color .2s!important}
-.nav-cta:hover{background:var(--gold)!important;color:var(--navy-deep)!important}
-.logo-svg{width:44px;height:44px}
-#hero{min-height:52vh;background:var(--navy-deep);display:flex;align-items:flex-end;padding:7rem 3rem 5rem;position:relative;overflow:hidden}
-#hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.05) 1px,transparent 1px);background-size:64px 64px}
-#hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-.hero-inner{max-width:1100px;margin:0 auto;width:100%;position:relative;z-index:1}
-.hero-eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1.25rem;display:block;opacity:0;animation:fadeUp .7s .2s ease forwards}
-.hero-name{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,8vw,96px);font-weight:600;line-height:.95;color:#fff;letter-spacing:-.02em;margin-bottom:1.25rem;opacity:0;animation:fadeUp .7s .35s ease forwards;white-space:nowrap}
-.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.2vw,24px);font-weight:300;font-style:italic;color:rgba(255,255,255,.55);opacity:0;animation:fadeUp .7s .5s ease forwards}
-.hero-rule{width:56px;height:1px;background:var(--gold);margin-top:2rem;opacity:0;animation:fadeUp .7s .65s ease forwards}
-#story{background:#fff;padding:6.5rem 3rem}
-.story-wrap{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
-.photo-block{position:sticky;top:7rem}
-.photo-placeholder{width:100%;aspect-ratio:3/4;background:var(--navy);border-radius:2px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;position:relative;overflow:hidden}
-.photo-placeholder::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.06) 1px,transparent 1px);background-size:32px 32px}
-.photo-icon{width:72px;height:72px;border-radius:50%;border:2px solid rgba(196,154,60,.4);display:flex;align-items:center;justify-content:center;position:relative;z-index:1}
-.photo-icon svg{opacity:.5}
-.photo-label{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);position:relative;z-index:1}
-.photo-caption{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:1}
-.photo-caption-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:rgba(255,255,255,.8);display:block}
-.photo-caption-role{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-light);opacity:.7}
-.story-content{padding-top:.5rem}
-.section-eye{display:block;font-size:11px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem}
-.story-h{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,42px);font-weight:600;color:var(--navy);line-height:1.2;margin-bottom:2rem}
-.story-h em{font-style:italic;color:var(--gold)}
-.story-p{font-size:15px;line-height:1.9;color:var(--text-mid);font-weight:300;margin-bottom:1.5rem}
-.story-p strong{color:var(--navy);font-weight:500}
-.story-p em{color:var(--navy);font-style:italic}
-.story-pull{margin:2.5rem 0;padding:1.75rem 2rem;border-left:3px solid var(--gold);background:var(--cream)}
-.story-pull p{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:400;font-style:italic;color:var(--navy);line-height:1.55}
-#timeline{background:var(--cream);padding:6.5rem 3rem;position:relative}
-#timeline::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.12),transparent)}
-.timeline-header{text-align:center;max-width:680px;margin:0 auto 5rem}
-.section-h-dark{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:var(--navy);line-height:1.2;margin-top:.5rem}
-.timeline-sub{font-size:17px;font-weight:300;color:var(--text-mid);line-height:1.75;margin-top:1.25rem;font-family:'Cormorant Garamond',serif;font-style:italic}
-.timeline-wrap{max-width:860px;margin:0 auto;position:relative}
-.timeline-line{position:absolute;left:10px;top:0;bottom:0;width:1px;background:linear-gradient(to bottom,transparent,var(--gold) 5%,var(--gold) 95%,transparent)}
-.tl-entry{display:flex;gap:2rem;margin-bottom:2.75rem;position:relative}
-.tl-entry:last-child{margin-bottom:0}
-.tl-left{flex-shrink:0;width:20px;display:flex;align-items:flex-start;justify-content:center;padding-top:1.55rem}
-.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--cream);z-index:1;position:relative;flex-shrink:0}
-.tl-dot.current{box-shadow:0 0 0 5px rgba(196,154,60,.18)}
-.tl-right{flex:1;background:#fff;padding:1.5rem 1.75rem;border-radius:2px;border:1px solid rgba(28,45,79,.07);transition:border-color .3s,transform .3s}
-.tl-right:hover{border-color:rgba(196,154,60,.3);transform:translateX(4px)}
-.tl-company{display:flex;align-items:center;justify-content:space-between;margin-bottom:.5rem;flex-wrap:wrap;gap:.5rem}
-.tl-company-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:600;color:var(--navy)}
-.tl-meta{display:flex;align-items:center;gap:.65rem;flex-wrap:wrap}
-.tl-year{font-size:11px;color:var(--text-light);letter-spacing:.04em}
-.tl-badge{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border:1px solid rgba(196,154,60,.4);padding:.2rem .65rem;border-radius:2px}
-.tl-role{font-size:12.5px;color:var(--text-mid);margin-bottom:.875rem;font-style:italic}
-.tl-achievement{font-size:13.5px;line-height:1.75;color:var(--text-mid);font-weight:300;padding-left:1rem;border-left:2px solid rgba(196,154,60,.3)}
-#credentials{background:#fff;padding:6rem 3rem;position:relative}
-#credentials::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(28,45,79,.1),transparent)}
-.creds-header{text-align:center;margin-bottom:4rem}
-.creds-grid{max-width:900px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.cred-card{text-align:center;padding:2.5rem 1.75rem;border:1px solid rgba(28,45,79,.08);border-radius:2px;transition:border-color .3s,transform .3s}
-.cred-card:hover{border-color:rgba(196,154,60,.3);transform:translateY(-3px)}
-.cred-icon{width:48px;height:48px;border-radius:50%;background:rgba(196,154,60,.1);display:flex;align-items:center;justify-content:center;margin:0 auto 1.25rem}
-.cred-qual{font-family:'Cormorant Garamond',serif;font-size:19px;font-weight:600;color:var(--navy);margin-bottom:.4rem;line-height:1.25}
-.cred-inst{font-size:12px;letter-spacing:.06em;color:var(--text-light);text-transform:uppercase;margin-bottom:.75rem}
-.cred-year{display:inline-block;font-size:10px;letter-spacing:.12em;color:var(--gold);border:1px solid rgba(196,154,60,.4);padding:.2rem .65rem;border-radius:2px;text-transform:uppercase}
-#style{background:var(--navy-deep);padding:6.5rem 3rem;position:relative}
-#style::before,#style::after{content:'';position:absolute;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
-#style::before{top:0}#style::after{bottom:0}
-.style-header{text-align:center;margin-bottom:4.5rem}
-.section-h-light{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,4vw,46px);font-weight:400;color:#fff;line-height:1.2;margin-top:.5rem}
-.style-grid{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
-.style-card{padding:2.75rem 2rem;border:1px solid rgba(255,255,255,.08);border-radius:2px;transition:border-color .3s,background .3s}
-.style-card:hover{border-color:rgba(196,154,60,.3);background:rgba(255,255,255,.02)}
-.style-num{font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(196,154,60,.15);line-height:1;margin-bottom:.25rem}
-.style-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:600;color:#fff;margin-bottom:1.25rem;line-height:1.2}
-.style-body{font-size:14px;line-height:1.9;color:rgba(255,255,255,.55);font-weight:300}
-.style-rule{width:32px;height:1px;background:var(--gold);margin-bottom:1.25rem;opacity:.6}
-#cta{background:var(--navy);padding:6.5rem 3rem;text-align:center;position:relative;overflow:hidden}
-#cta::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(196,154,60,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(196,154,60,.04) 1px,transparent 1px);background-size:64px 64px}
-.cta-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.cta-h{font-family:'Cormorant Garamond',serif;font-size:clamp(34px,5vw,60px);font-weight:500;color:#fff;line-height:1.25;margin-bottom:1rem}
-.cta-h em{font-style:italic;color:var(--gold)}
-.cta-p{font-size:15.5px;font-weight:300;color:rgba(255,255,255,.65);line-height:1.75;margin-bottom:2.5rem}
-.btn-gold{display:inline-block;padding:.9rem 2.5rem;background:var(--gold);color:var(--navy-deep);text-decoration:none;font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;transition:background .2s,transform .2s}
-.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
-.cta-email{display:inline-block;font-size:13px;letter-spacing:.1em;color:var(--gold-light);text-decoration:none;margin-top:1.25rem;transition:color .2s}
-.cta-email:hover{color:#fff}
-footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgba(255,255,255,.07)}
-.footer-in{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Adam Solley — Founder of Acceler8 Commercial. 20 years of senior commercial and procurement leadership across FTSE enterprises, Fintech and professional services.">
+  <title>About — Acceler8 Commercial Ltd</title>
 
-/* Mobile Responsive */
-@media(max-width:768px){
-  nav{padding:1rem 1.5rem}
-  .nav-logo-text{display:none}
-  .nav-links{gap:1rem}
-  .nav-links a{font-size:11px}
-  .hero-inner{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
-  .hero-h{font-size:clamp(28px,5vw,48px)}
-  .photo-block{position:static;margin-bottom:2rem}
-  .story-section{padding:1.5rem}
-  .story-h{font-size:24px}
-  .story-p{font-size:14px;line-height:1.6}
-  .timeline{padding:1.5rem}
-  .tl-item{padding-left:1.5rem;margin-bottom:1.5rem}
-  .tl-date{font-size:12px}
-  .tl-company{font-size:16px}
-  .tl-role{font-size:13px}
-  .tl-achievement{font-size:13px}
-  .style-grid{grid-template-columns:1fr;gap:2rem;padding:1.5rem}
-  .style-item{padding:1.5rem}
-  .style-h3{font-size:16px}
-  .style-p{font-size:13px}
-  .cta-inner{padding:2rem 1.5rem}
-  .cta-h{font-size:clamp(24px,5vw,42px)}
-  .cta-p{font-size:14px}
-  .btn-gold{padding:0.9rem 1.8rem;font-size:12px}
-}
-.footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
-.footer-links{display:flex;gap:2rem;list-style:none}
-.footer-links a{font-size:11.5px;color:rgba(255,255,255,.35);text-decoration:none;letter-spacing:.05em;transition:color .2s}
-.footer-links a:hover{color:var(--gold-light)}
-@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s ease,transform .75s ease}
-.reveal.in{opacity:1;transform:translateY(0)}
-.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
-</style>
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+
+  <!-- External Stylesheet - Shared across all pages -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<nav>
-  <a href="index.html" class="nav-logo">
-    
-    <span class="nav-logo-text">
-      <span class="nav-logo-main">Acceler8</span>
-      <span class="nav-logo-sub">Commercial Ltd</span>
-    </span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="services.html">Services</a></li>
-    <li><a href="results.html">Results</a></li>
-    <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
-  </ul>
-</nav>
 
-<section id="hero">
-  <div class="hero-inner">
-    <span class="hero-eyebrow">The person behind the business</span>
-    <h1 class="hero-name">Adam Solley</h1>
-    <p class="hero-title">Founder &amp; Director, Acceler8 Commercial Ltd</p>
-    <div class="hero-rule"></div>
-  </div>
-</section>
+  <!-- Skip to Main Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<section id="story">
-  <div class="story-wrap">
-    <div class="photo-block reveal">
-      <img src="adam-solley-headshot.jpg" alt="Adam Solley, Founder & Director of Acceler8 Commercial Ltd" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block;">
-    </div>
-    <div class="story-content">
-      <span class="section-eye reveal">About Adam</span>
-      <h2 class="story-h reveal d1">A career built at the<br><em>commercial intersection</em></h2>
-      <p class="story-p reveal d2">Adam began his career in management consulting, where he learned to diagnose complex business problems and design solutions across large organisations. But it was moving into procurement — at Brit Insurance, Equifax and then GSK — that gave him his deepest commercial education.</p>
-      <p class="story-p reveal d2">Procurement taught Adam how buyers <em>really</em> think. He holds a deep understanding of how they actually assess risk, challenge pricing, dissect contracts and decide what truly matters versus what they will concede. Most people who cross from procurement to sales lose that perspective quickly. Adam never did.</p>
-      <div class="story-pull reveal d3">
-        <p>"The best commercial operators are not the ones who push hardest from one side of the table — they are the ones who understand both sides well enough to find a faster, more durable path to agreement."</p>
-      </div>
-      <p class="story-p reveal d3">When Adam joined Aptitude Software as Senior Commercial Director, he built their global commercial function from scratch — applying everything he had learned about how buyers behave to make it dramatically more effective. Ninety net-new deals. £120m in software contracts personally negotiated. Time to signature cut by 60%. Not by pushing harder, but by designing smarter processes, cleaner contracts and a commercial playbook that removed friction from every deal.</p>
-      <p class="story-p reveal d3">That experience is the foundation of Acceler8 Commercial. Every engagement is hands-on — Adam embeds into your team, works alongside your people, and leaves behind processes, playbooks and commercial capability that outlasts the engagement.</p>
-    </div>
-  </div>
-</section>
+  <!-- Navigation -->
+  <nav id="nav" class="closed">
+    <a href="index.html" class="nav-logo">
+      <span class="nav-logo-text">
+        <span class="nav-logo-main">Acceler8</span>
+        <span class="nav-logo-sub">Commercial Ltd</span>
+      </span>
+    </a>
 
-<section id="timeline">
-  <div class="timeline-header">
-    <span class="section-eye reveal">Career</span>
-    <h2 class="section-h-dark reveal d1">Twenty years. Eight organisations.<br>One consistent thread.</h2>
-    <p class="timeline-sub reveal d2">A relentless focus on the moment where buyer meets seller — and making that moment happen faster, smarter and more profitably.</p>
-  </div>
-  <div class="timeline-wrap">
-    <div class="timeline-line"></div>
+    <!-- Mobile Menu Toggle -->
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
 
-    <div class="tl-entry reveal">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Capgemini</span><div class="tl-meta"><span class="tl-year">2005–2006</span><span class="tl-badge">Consulting</span></div></div>
-        <p class="tl-role">Associate Consultant</p>
-        <p class="tl-achievement">Consultant on a nationwide local government efficiency project, delivering cost-saving proposals across all nine English regions and a Parliamentary White Paper to the Office of the Deputy Prime Minister.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d1">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Brit Insurance</span><div class="tl-meta"><span class="tl-year">2008–2012</span><span class="tl-badge">Insurance</span></div></div>
-        <p class="tl-role">Commercial Services &amp; Procurement Manager</p>
-        <p class="tl-achievement">Exceeded savings targets four consecutive years — by 27%, 86%, 116% and 74% respectively. Led commercial programmes including a multi-year BPO/ITO outsource deal and the divestment of a motor insurance book generating £2m savings and £515k revenue.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d2">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Equifax</span><div class="tl-meta"><span class="tl-year">2012–2013</span><span class="tl-badge">Financial Data</span></div></div>
-        <p class="tl-role">OPEX Manager</p>
-        <p class="tl-achievement">Reporting to the UK CFO. Delivered £850k+ in savings — approximately 430% of annual target — while generating £100k of net-new revenue through blue-sky procurement initiatives.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d1">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">GSK</span><div class="tl-meta"><span class="tl-year">2013–2016</span><span class="tl-badge">Pharma / Global</span></div></div>
-        <p class="tl-role">PMO: Performance &amp; Strategy → Chief of Staff to CPO → Head of Procurement (ViiV)</p>
-        <p class="tl-achievement">Programme lead for a multi-year, multi-business unit $12B Working Capital initiative. Delivered global Procurement function re-org saving 25% FTE cost. Served as Chief of Staff to the R&amp;D Procurement VP, and led global category strategy effectiveness improvement program across the org. Head of Procurement for a standalone business unit with £1Bn spend.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d2">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Aptitude Software</span><div class="tl-meta"><span class="tl-year">2017–2022</span><span class="tl-badge">Fintech SaaS</span></div></div>
-        <p class="tl-role">Senior Commercial Director</p>
-        <p class="tl-achievement">Established the global Commercial function from scratch. Personally negotiated 90 net-new client deals worth over £120m TCV. Reduced average time to signature by 60% via a bespoke Commercial Playbook. Programme Director for multiple SaaS product launches including full pricing model design. Accepted CFO signatory and deal escalation duties.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d1">
-      <div class="tl-left"><div class="tl-dot"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Mars</span><div class="tl-meta"><span class="tl-year">Apr–Nov 2023</span><span class="tl-badge">Global FMCG</span></div></div>
-        <p class="tl-role">Strategy &amp; Programme Transformation Lead (Contractor)</p>
-        <p class="tl-achievement">Programme lead across multiple strategic commercial initiatives including a $10B Standard Payment Terms programme and Commercial Performance Management for a £600m three-year savings target. Also served as Chief of Staff to the VP of Indirect Commercial.</p>
-      </div>
-    </div>
-
-    <div class="tl-entry reveal d2">
-      <div class="tl-left"><div class="tl-dot current"></div></div>
-      <div class="tl-right">
-        <div class="tl-company"><span class="tl-company-name">Acceler8 Commercial</span><div class="tl-meta"><span class="tl-year">Nov 2023–Present</span><span class="tl-badge">Founder</span></div></div>
-        <p class="tl-role">Founder &amp; Director</p>
-        <p class="tl-achievement">Providing transformational interim commercial and procurement leadership across B2B software and Fintech. Negotiated an Oracle ULA for a FTSE 250 client delivering multi-million dollar savings. Led sales negotiations closing approximately £15m ARR. Designing commercial models, solution price books and operational processes for clients at scale.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<section id="credentials">
-  <div class="creds-header">
-    <span class="section-eye reveal">Education &amp; Qualifications</span>
-    <h2 class="section-h-dark reveal d1">Built on rigorous foundations</h2>
-  </div>
-  <div class="creds-grid">
-    <div class="cred-card reveal">
-      <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 2L2 7l9 5 9-5-9-5z" stroke="#C49A3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 7v8M20 7v8" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M6 9.5v5.5a5 5 0 0010 0V9.5" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <p class="cred-qual">BSc Hons Business Management</p>
-      <p class="cred-inst">University of Surrey</p>
-      <span class="cred-year">2003–2007</span>
-    </div>
-    <div class="cred-card reveal d1">
-      <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><rect x="3" y="3" width="16" height="16" rx="2" stroke="#C49A3C" stroke-width="1.5"/><path d="M7 11l3 3 5-5" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
-      <p class="cred-qual">MCIPS</p>
-      <p class="cred-inst">Chartered Institute of Purchasing &amp; Supply</p>
-      <span class="cred-year">2010–2012</span>
-    </div>
-    <div class="cred-card reveal d2">
-      <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none"><circle cx="11" cy="11" r="8" stroke="#C49A3C" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
-      <p class="cred-qual">Advanced Personal Leadership</p>
-      <p class="cred-inst">Henley Business School</p>
-      <span class="cred-year">2022</span>
-    </div>
-  </div>
-</section>
-
-<section id="style">
-  <div class="style-header">
-    <span class="section-eye reveal">How Adam works</span>
-    <h2 class="section-h-light reveal d1">The approach behind the outcomes</h2>
-  </div>
-  <div class="style-grid">
-    <div class="style-card reveal">
-      <div class="style-num">01</div>
-      <div class="style-rule"></div>
-      <h3 class="style-title">Composed &amp; decisive</h3>
-      <p class="style-body">Twenty years of high-stakes commercial negotiations has taught Adam that composure is a strategic asset. When deals become complex and pressure mounts, his instinct is to stay measured — reading the situation, identifying the real sticking points and cutting through the noise to accelerate towards signature. Steadiness at the table is not hesitancy; it is what gets deals closed when others lose their nerve.</p>
-    </div>
-    <div class="style-card reveal d1">
-      <div class="style-num">02</div>
-      <div class="style-rule"></div>
-      <h3 class="style-title">Collaborative by instinct</h3>
-      <p class="style-body">Adam understands the power of the collective. Whether leading a team or contributing as a member, he actively seeks out input, challenge and creative thinking from those around him. The best commercial solutions are rarely built in isolation — and the best advice often comes from the least expected places.</p>
-    </div>
-    <div class="style-card reveal d2">
-      <div class="style-num">03</div>
-      <div class="style-rule"></div>
-      <h3 class="style-title">A genuine role model</h3>
-      <p class="style-body">Adam takes pride in his work and believes you are only as good as your last engagement. That standard extends to the people he works with — sharing knowledge, passing on skills and helping clients and colleagues build lasting commercial capability alongside the immediate deliverable.</p>
-    </div>
-  </div>
-</section>
-
-<section id="cta">
-  <div class="cta-inner">
-    <span class="section-eye reveal">Work with Adam</span>
-    <h2 class="cta-h reveal d1">Ready to have a<br><em>straight conversation?</em></h2>
-    <p class="cta-p reveal d2">No lengthy proposals, no junior teams. Just an experienced commercial operator who will tell you honestly what your business needs — and get straight to work.</p>
-    <a href="contact.html" class="btn-gold reveal d3">Get in Touch</a><br>
-    <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
-  </div>
-</section>
-
-<footer>
-  <div class="footer-in">
-    <span class="footer-copy">© 2023 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
-    <ul class="footer-links">
+    <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html" aria-current="page">About</a></li>
       <li><a href="services.html">Services</a></li>
       <li><a href="results.html">Results</a></li>
-      <li><a href="contact.html">Contact</a></li>
-      <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank">LinkedIn ↗</a></li>
+      <li><a href="contact.html" class="nav-cta">Let's Talk</a></li>
     </ul>
-  </div>
-</footer>
+  </nav>
 
-<script>
-const reveals=document.querySelectorAll('.reveal');
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}})},{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-reveals.forEach(el=>observer.observe(el));
-</script>
+  <!-- Main Content -->
+  <main id="main-content">
+
+    <!-- Hero Section -->
+    <section id="hero" class="about-hero">
+      <div class="hero-inner">
+        <span class="hero-eyebrow">The person behind the business</span>
+        <h1 class="hero-name">Adam Solley</h1>
+        <p class="hero-title">Founder &amp; Director, Acceler8 Commercial Ltd</p>
+        <div class="hero-rule"></div>
+      </div>
+    </section>
+
+    <!-- Story Section -->
+    <section id="story">
+      <div class="story-wrap">
+        <div class="photo-block reveal">
+          <img src="adam-solley-headshot.jpg" alt="Adam Solley, Founder & Director of Acceler8 Commercial Ltd" style="width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:2px;display:block;">
+        </div>
+        <div class="story-content">
+          <span class="section-eye reveal">About Adam</span>
+          <h2 class="story-h reveal d1">A career built at the<br><em>commercial intersection</em></h2>
+          <p class="story-p reveal d2">Adam began his career in management consulting, where he learned to diagnose complex business problems and design solutions across large organisations. But it was moving into procurement — at Brit Insurance, Equifax and then GSK — that gave him his deepest commercial education.</p>
+          <p class="story-p reveal d2">Procurement taught Adam how buyers <em>really</em> think. He holds a deep understanding of how they actually assess risk, challenge pricing, dissect contracts and decide what truly matters versus what they will concede. Most people who cross from procurement to sales lose that perspective quickly. Adam never did.</p>
+          <div class="story-pull reveal d3">
+            <p>"The best commercial operators are not the ones who push hardest from one side of the table — they are the ones who understand both sides well enough to find a faster, more durable path to agreement."</p>
+          </div>
+          <p class="story-p reveal d3">When Adam joined Aptitude Software as Senior Commercial Director, he built their global commercial function from scratch — applying everything he had learned about how buyers behave to make it dramatically more effective. Ninety net-new deals. £120m in software contracts personally negotiated. Time to signature cut by 60%. Not by pushing harder, but by designing smarter processes, cleaner contracts and a commercial playbook that removed friction from every deal.</p>
+          <p class="story-p reveal d3">That experience is the foundation of Acceler8 Commercial. Every engagement is hands-on — Adam embeds into your team, works alongside your people, and leaves behind processes, playbooks and commercial capability that outlasts the engagement.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Timeline Section -->
+    <section id="timeline">
+      <div class="timeline-header">
+        <span class="section-eye reveal">Career</span>
+        <h2 class="section-h-dark reveal d1">Twenty years. Eight organisations.<br>One consistent thread.</h2>
+        <p class="timeline-sub reveal d2">A relentless focus on the moment where buyer meets seller — and making that moment happen faster, smarter and more profitably.</p>
+      </div>
+      <div class="timeline-wrap">
+        <div class="timeline-line"></div>
+
+        <div class="tl-entry reveal">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Capgemini</span><div class="tl-meta"><span class="tl-year">2005–2006</span><span class="tl-badge">Consulting</span></div></div>
+            <p class="tl-role">Associate Consultant</p>
+            <p class="tl-achievement">Consultant on a nationwide local government efficiency project, delivering cost-saving proposals across all nine English regions and a Parliamentary White Paper to the Office of the Deputy Prime Minister.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d1">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Brit Insurance</span><div class="tl-meta"><span class="tl-year">2008–2012</span><span class="tl-badge">Insurance</span></div></div>
+            <p class="tl-role">Commercial Services &amp; Procurement Manager</p>
+            <p class="tl-achievement">Exceeded savings targets four consecutive years — by 27%, 86%, 116% and 74% respectively. Led commercial programmes including a multi-year BPO/ITO outsource deal and the divestment of a motor insurance book generating £2m savings and £515k revenue.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d2">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Equifax</span><div class="tl-meta"><span class="tl-year">2012–2013</span><span class="tl-badge">Financial Data</span></div></div>
+            <p class="tl-role">OPEX Manager</p>
+            <p class="tl-achievement">Reporting to the UK CFO. Delivered £850k+ in savings — approximately 430% of annual target — while generating £100k of net-new revenue through blue-sky procurement initiatives.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d1">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">GSK</span><div class="tl-meta"><span class="tl-year">2013–2016</span><span class="tl-badge">Pharma / Global</span></div></div>
+            <p class="tl-role">PMO: Performance &amp; Strategy → Chief of Staff to CPO → Head of Procurement (ViiV)</p>
+            <p class="tl-achievement">Programme lead for a multi-year, multi-business unit $12B Working Capital initiative. Delivered global Procurement function re-org saving 25% FTE cost. Served as Chief of Staff to the R&amp;D Procurement VP, and led global category strategy effectiveness improvement program across the org. Head of Procurement for a standalone business unit with £1Bn spend.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d2">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Aptitude Software</span><div class="tl-meta"><span class="tl-year">2017–2022</span><span class="tl-badge">Fintech SaaS</span></div></div>
+            <p class="tl-role">Senior Commercial Director</p>
+            <p class="tl-achievement">Established the global Commercial function from scratch. Personally negotiated 90 net-new client deals worth over £120m TCV. Reduced average time to signature by 60% via a bespoke Commercial Playbook. Programme Director for multiple SaaS product launches including full pricing model design. Accepted CFO signatory and deal escalation duties.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d1">
+          <div class="tl-left"><div class="tl-dot"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Mars</span><div class="tl-meta"><span class="tl-year">Apr–Nov 2023</span><span class="tl-badge">Global FMCG</span></div></div>
+            <p class="tl-role">Strategy &amp; Programme Transformation Lead (Contractor)</p>
+            <p class="tl-achievement">Programme lead across multiple strategic commercial initiatives including a $10B Standard Payment Terms programme and Commercial Performance Management for a £600m three-year savings target. Also served as Chief of Staff to the VP of Indirect Commercial.</p>
+          </div>
+        </div>
+
+        <div class="tl-entry reveal d2">
+          <div class="tl-left"><div class="tl-dot current"></div></div>
+          <div class="tl-right">
+            <div class="tl-company"><span class="tl-company-name">Acceler8 Commercial</span><div class="tl-meta"><span class="tl-year">Nov 2023–Present</span><span class="tl-badge">Founder</span></div></div>
+            <p class="tl-role">Founder &amp; Director</p>
+            <p class="tl-achievement">Providing transformational interim commercial and procurement leadership across B2B software and Fintech. Negotiated an Oracle ULA for a FTSE 250 client delivering multi-million dollar savings. Led sales negotiations closing approximately £15m ARR. Designing commercial models, solution price books and operational processes for clients at scale.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Credentials Section -->
+    <section id="credentials">
+      <div class="creds-header">
+        <span class="section-eye reveal">Education &amp; Qualifications</span>
+        <h2 class="section-h-dark reveal d1">Built on rigorous foundations</h2>
+      </div>
+      <div class="creds-grid">
+        <div class="cred-card reveal">
+          <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><path d="M11 2L2 7l9 5 9-5-9-5z" stroke="#C49A3C" stroke-width="1.5" stroke-linejoin="round"/><path d="M2 7v8M20 7v8" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/><path d="M6 9.5v5.5a5 5 0 0010 0V9.5" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <p class="cred-qual">BSc Hons Business Management</p>
+          <p class="cred-inst">University of Surrey</p>
+          <span class="cred-year">2003–2007</span>
+        </div>
+        <div class="cred-card reveal d1">
+          <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><rect x="3" y="3" width="16" height="16" rx="2" stroke="#C49A3C" stroke-width="1.5"/><path d="M7 11l3 3 5-5" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <p class="cred-qual">MCIPS</p>
+          <p class="cred-inst">Chartered Institute of Purchasing &amp; Supply</p>
+          <span class="cred-year">2010–2012</span>
+        </div>
+        <div class="cred-card reveal d2">
+          <div class="cred-icon"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="#C49A3C" stroke-width="1.5"/><path d="M11 7v4l3 2" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+          <p class="cred-qual">Advanced Personal Leadership</p>
+          <p class="cred-inst">Henley Business School</p>
+          <span class="cred-year">2022</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Working Style Section -->
+    <section id="style">
+      <div class="style-header">
+        <span class="section-eye reveal">How Adam works</span>
+        <h2 class="section-h-light reveal d1">The approach behind the outcomes</h2>
+      </div>
+      <div class="style-grid">
+        <div class="style-card reveal">
+          <div class="style-num">01</div>
+          <div class="style-rule"></div>
+          <h3 class="style-title">Composed &amp; decisive</h3>
+          <p class="style-body">Twenty years of high-stakes commercial negotiations has taught Adam that composure is a strategic asset. When deals become complex and pressure mounts, his instinct is to stay measured — reading the situation, identifying the real sticking points and cutting through the noise to accelerate towards signature. Steadiness at the table is not hesitancy; it is what gets deals closed when others lose their nerve.</p>
+        </div>
+        <div class="style-card reveal d1">
+          <div class="style-num">02</div>
+          <div class="style-rule"></div>
+          <h3 class="style-title">Collaborative by instinct</h3>
+          <p class="style-body">Adam understands the power of the collective. Whether leading a team or contributing as a member, he actively seeks out input, challenge and creative thinking from those around him. The best commercial solutions are rarely built in isolation — and the best advice often comes from the least expected places.</p>
+        </div>
+        <div class="style-card reveal d2">
+          <div class="style-num">03</div>
+          <div class="style-rule"></div>
+          <h3 class="style-title">A genuine role model</h3>
+          <p class="style-body">Adam takes pride in his work and believes you are only as good as your last engagement. That standard extends to the people he works with — sharing knowledge, passing on skills and helping clients and colleagues build lasting commercial capability alongside the immediate deliverable.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta">
+      <div class="cta-inner">
+        <span class="section-eye reveal">Work with Adam</span>
+        <h2 class="cta-h reveal d1">Ready to have a<br><em>straight conversation?</em></h2>
+        <p class="cta-p reveal d2">No lengthy proposals, no junior teams. Just an experienced commercial operator who will tell you honestly what your business needs — and get straight to work.</p>
+        <a href="contact.html" class="btn-gold reveal d3">Get in Touch</a><br>
+        <a href="mailto:adam@acceler8commercial.co.uk" class="cta-email reveal d4">adam@acceler8commercial.co.uk</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-in">
+      <span class="footer-copy">© 2026 Acceler8 Commercial Ltd · Registered in England &amp; Wales</span>
+      <ul class="footer-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="results.html">Results</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="https://www.linkedin.com/in/adamfsolley" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></li>
+      </ul>
+    </div>
+  </footer>
+
+  <!-- Mobile Menu & Scroll Effects -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const nav = document.getElementById('nav');
+    const navLinks = document.querySelectorAll('.nav-links a');
+
+    mobileMenuToggle.addEventListener('click', () => {
+      const isOpen = nav.classList.contains('open');
+      if (isOpen) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      } else {
+        nav.classList.add('open');
+        nav.classList.remove('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    // Escape key closes menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        nav.classList.add('closed');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.focus();
+      }
+    });
+
+    // Nav scroll effect - add solid background when scrolled
+    let lastScrollY = 0;
+    window.addEventListener('scroll', () => {
+      lastScrollY = window.scrollY;
+      if (lastScrollY > 40) {
+        nav.style.background = 'linear-gradient(to bottom, rgba(15, 27, 49, 0.98), rgba(15, 27, 49, 0.95))';
+      } else {
+        nav.style.background = 'var(--navy-deep)';
+      }
+    });
+
+    // Scroll reveal animations
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    reveals.forEach(el => observer.observe(el));
+  </script>
+
 </body>
 </html>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
