@@ -81,6 +81,8 @@ nav {
   justify-content: space-between;
   transition: background 0.4s, box-shadow 0.4s, max-height 0.3s ease;
   background: transparent;
+  width: 100%;
+  overflow: hidden;
 }
 
 nav.scrolled {
@@ -1224,14 +1226,21 @@ footer {
     flex-direction: column;
     background: var(--navy-deep) !important;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35) !important;
-    padding: 1rem 0;
+    padding: 0.75rem 0;
+    max-height: calc(100vh - 60px);
+    overflow-y: auto;
+    width: 100vw;
+    position: fixed;
+    left: 0;
+    right: 0;
   }
 
   nav.open .nav-logo {
     width: 100%;
     justify-content: center;
-    padding: 1rem;
+    padding: 0.75rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    flex-shrink: 0;
   }
 
   nav.open .nav-links {
@@ -1252,13 +1261,18 @@ footer {
 
   nav.open .nav-links a {
     display: block;
-    padding: 1rem;
+    padding: 0.85rem 1rem;
     text-align: center;
     font-size: 13px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   nav.open .nav-cta {
-    margin: 1rem;
+    margin: 0.75rem;
+    min-height: 44px;
   }
 
   .nav-logo-text {
@@ -1267,7 +1281,8 @@ footer {
 
   #hero {
     min-height: auto;
-    padding: 4rem 1.5rem 3rem;
+    padding: 3.5rem 1.5rem 2.5rem;
+    margin-top: 0;
   }
 
   .hero-eyebrow {
@@ -1299,23 +1314,32 @@ footer {
   }
 
   #questions {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1.5rem;
   }
 
   .qs-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .section-h-light {
-    font-size: clamp(24px, 5vw, 36px);
+    font-size: clamp(22px, 4.5vw, 34px);
   }
 
   .q-item {
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .q-num {
+    font-size: clamp(18px, 2vw, 22px);
   }
 
   .q-text {
-    font-size: clamp(18px, 2vw, 24px);
+    font-size: clamp(16px, 1.9vw, 22px);
+  }
+
+  .q-tag {
+    font-size: 9px;
+    padding: 0.2rem 0.6rem;
   }
 
   #pivot {
@@ -1364,17 +1388,19 @@ footer {
   }
 
   #stats {
-    padding: 3rem 1.5rem;
+    padding: 2.75rem 1.5rem;
   }
 
   .stats-row {
     grid-template-columns: 1fr;
+    gap: 0;
   }
 
   .stat {
     border-right: none !important;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding: 1.5rem 1.25rem;
+    padding: 1.25rem 1rem;
+    text-align: center;
   }
 
   .stat:last-child {
@@ -1382,43 +1408,59 @@ footer {
   }
 
   .stat-n {
-    font-size: clamp(32px, 4vw, 48px);
+    font-size: clamp(28px, 3.5vw, 44px);
+    margin-bottom: 0.4rem;
   }
 
   .stat-l {
     font-size: 10px;
+    line-height: 1.4;
   }
 
   #services {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .svc-header {
+    margin-bottom: 2.5rem;
   }
 
   .section-h-dark {
-    font-size: clamp(24px, 4vw, 40px);
+    font-size: clamp(22px, 3.8vw, 38px);
+    margin-top: 0.5rem;
   }
 
   .svc-sub {
-    font-size: 14px;
+    font-size: 13.5px;
+    margin: 0.75rem auto 0;
   }
 
   .svc-grid {
-    gap: 1.25rem;
+    gap: 1rem;
   }
 
   .svc-card {
-    padding: 1.5rem;
+    padding: 1.25rem;
   }
 
   .svc-num {
-    font-size: 40px;
+    font-size: 36px;
+    margin-bottom: 0.2rem;
   }
 
   .svc-title {
-    font-size: 20px;
+    font-size: 18px;
+    margin-bottom: 0.85rem;
   }
 
   .svc-body {
     font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .tag {
+    font-size: 8px;
+    padding: 0.15rem 0.5rem;
   }
 
   #clients {
@@ -1434,15 +1476,28 @@ footer {
   }
 
   #cta {
-    padding: 4rem 1.5rem;
+    padding: 3.5rem 1.5rem;
+  }
+
+  .cta-inner {
+    max-width: 100%;
   }
 
   .cta-h {
-    font-size: clamp(26px, 4vw, 40px);
+    font-size: clamp(24px, 3.8vw, 38px);
+    margin-bottom: 0.85rem;
   }
 
   .cta-p {
-    font-size: 14px;
+    font-size: 13.5px;
+    margin-bottom: 2rem;
+    line-height: 1.7;
+  }
+
+  .btn-gold {
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    font-size: 11px;
   }
 
   footer {
@@ -1564,7 +1619,7 @@ footer {
   /* Contact page responsive */
   .contact-wrap {
     grid-template-columns: 1fr;
-    gap: 2rem;
+    gap: 1.5rem;
   }
 
   .form-row {
@@ -1573,6 +1628,7 @@ footer {
 
   .form-checks {
     grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 
   .form-submit {
@@ -1580,17 +1636,30 @@ footer {
     gap: 1rem;
   }
 
+  .check-item {
+    gap: 0.7rem;
+    padding: 0.3rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .check-item input[type="checkbox"] {
+    min-width: 24px;
+    min-height: 24px;
+  }
+
   .btn-submit {
     width: 100%;
-    padding: 0.9rem 1.8rem;
+    padding: 0.8rem 1.5rem;
+    min-height: 44px;
+    font-size: 11px;
   }
 }
 
 @media (max-width: 375px) {
-  /* Standard iPhone optimization (iPhone 6/7/8/SE) - IMPROVED: Fine-tuning for 375px width */
+  /* Standard iPhone optimization (iPhone SE) - IMPROVED: Better spacing and sizing for 375px width */
 
   nav {
-    padding: 0.7rem 0.85rem;
+    padding: 0.65rem 0.85rem;
   }
 
   .nav-logo-main {
@@ -1606,39 +1675,74 @@ footer {
   }
 
   #hero {
-    padding: 3.5rem 1rem 2rem;
+    padding: 3rem 0.85rem 2rem;
   }
 
   .hero-title {
-    font-size: clamp(32px, 8vw, 48px);
+    font-size: clamp(28px, 7vw, 44px);
   }
 
   .hero-sub {
-    font-size: clamp(14px, 1.8vw, 18px);
+    font-size: clamp(13px, 1.7vw, 16px);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-btns {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-gold,
+  .btn-ghost {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 10px;
   }
 
   .section-h-light {
-    font-size: clamp(22px, 4vw, 32px);
+    font-size: clamp(20px, 3.8vw, 30px);
   }
 
   .q-item {
-    padding: 1.1rem 0.9rem;
+    padding: 1rem 0.85rem;
   }
 
   .q-text {
-    font-size: clamp(16px, 1.9vw, 22px);
+    font-size: clamp(15px, 1.8vw, 20px);
   }
 
   .svc-card {
-    padding: 1.1rem;
+    padding: 1rem;
   }
 
   .about-h {
-    font-size: clamp(20px, 3vw, 26px);
+    font-size: clamp(18px, 2.8vw, 24px);
   }
 
   .story-h {
-    font-size: clamp(24px, 3.2vw, 36px);
+    font-size: clamp(20px, 3vw, 32px);
+  }
+
+  .form-h {
+    font-size: clamp(20px, 2.8vw, 30px);
+  }
+
+  .check-item {
+    gap: 0.6rem;
+    padding: 0.25rem;
+  }
+
+  .check-item input[type="checkbox"] {
+    min-width: 22px;
+    min-height: 22px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    padding: 0.75rem 1.25rem;
+    font-size: 10px;
   }
 }
 
@@ -1757,6 +1861,12 @@ footer {
 
   .hero-title {
     font-size: clamp(32px, 7vw, 48px);
+    line-height: 0.9;
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 1.8vw, 18px);
+    margin-bottom: 1.75rem;
   }
 
   .hero-btns {
@@ -1767,8 +1877,9 @@ footer {
   .btn-gold,
   .btn-ghost {
     width: 100%;
-    padding: 0.9rem 1.5rem;
+    padding: 0.85rem 1.5rem;
     min-height: 44px;
+    font-size: 10px;
   }
 
   #questions {
@@ -1804,11 +1915,23 @@ footer {
   }
 
   footer {
-    padding: 1.5rem 1rem;
+    padding: 1.25rem 1rem;
   }
 
   .footer-in {
-    gap: 1rem;
+    gap: 0.75rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .footer-copy,
+  .footer-links {
+    font-size: 11px;
+  }
+
+  .footer-links {
+    gap: 0.75rem;
+    flex-wrap: wrap;
   }
 }
 

@@ -180,16 +180,34 @@ footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgb
 
 @media(max-width:480px){
   nav{padding:0.75rem 1rem}
-  #hero{padding:4rem 1rem 2rem;margin-top:50px}
-  .hero-h{font-size:clamp(28px,7vw,44px)}
-  #service-nav{padding:0}
-  .svc-tabs{padding:0 1rem}
-  .svc-section{padding:2.5rem 1rem}
-  .svc-num{font-size:clamp(36px,8vw,56px)}
-  .svc-title{font-size:clamp(18px,4vw,26px)}
-  #cta{padding:3rem 1rem}
-  .cta-h{font-size:clamp(22px,4vw,36px)}
-  footer{padding:1.5rem 1rem}
+  #hero{padding:3.5rem 1rem 1.5rem;margin-top:50px;min-height:auto}
+  .hero-h{font-size:clamp(24px,6vw,40px)}
+  .hero-intro{font-size:clamp(14px,1.8vw,17px);margin-bottom:1.5rem}
+  #service-nav{padding:0;position:static;margin-top:-12px;background:var(--navy-deep)}
+  .svc-tabs{padding:0.75rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:0.5rem;white-space:nowrap}
+  .svc-tab{padding:0.6rem 0.9rem;font-size:9px;flex-shrink:0}
+  .svc-section{padding:2.25rem 1rem;overflow:hidden;width:100%;max-width:100%}
+  .svc-inner{grid-template-columns:1fr;gap:1.5rem;max-width:100%;margin:0;padding:0}
+  .svc-left{position:static;top:auto;sticky:none}
+  .svc-num{font-size:clamp(32px,8vw,48px);margin-bottom:-0.5rem}
+  .svc-eyebrow{font-size:10px}
+  .svc-title{font-size:clamp(18px,4.5vw,26px);line-height:1.15}
+  .svc-hook{font-size:14px;margin-bottom:1.25rem;padding-bottom:1.25rem}
+  .svc-body p{font-size:13px;line-height:1.8;margin-bottom:1rem}
+  .svc-problem{padding:1.25rem;margin-bottom:1.25rem}
+  .svc-problem p{font-size:16px}
+  .svc-delivers{margin-top:1.25rem}
+  .svc-deliver-item{margin-bottom:0.8rem;gap:0.6rem}
+  .svc-who{padding:1rem;margin-top:1.25rem}
+  .svc-cta{margin-top:1.5rem;font-size:11px}
+  #cta{padding:2.75rem 1rem;text-align:center}
+  .cta-h{font-size:clamp(20px,4vw,32px)}
+  .cta-p{font-size:13px;margin-bottom:2rem}
+  .btn-gold{padding:0.75rem 1.5rem;font-size:10px;min-height:44px;display:inline-flex;align-items:center;justify-content:center}
+  footer{padding:1.25rem 1rem}
+  .footer-copy{font-size:11px}
+  body,main,section{overflow-x:hidden;max-width:100%}
+  *{box-sizing:border-box}
 }
 .footer-copy{font-size:11.5px;color:rgba(255,255,255,.35);letter-spacing:.05em}
 .footer-links{display:flex;gap:2rem;list-style:none}
