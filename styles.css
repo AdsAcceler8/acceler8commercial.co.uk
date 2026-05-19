@@ -49,6 +49,13 @@ body {
   overflow-x: hidden;
 }
 
+/* RESPONSIVE IMAGES - IMPROVED: Ensures images scale properly on mobile */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ════════════════════════════════════════════════════════════════
    TYPOGRAPHY
    ════════════════════════════════════════════════════════════════ */
@@ -72,7 +79,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background 0.4s, box-shadow 0.4s;
+  transition: background 0.4s, box-shadow 0.4s, max-height 0.3s ease;
   background: transparent;
 }
 
@@ -318,6 +325,10 @@ nav.scrolled {
   transition: background var(--transition-fast), transform var(--transition-fast);
   cursor: pointer;
   border: none;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .btn-gold:hover,
@@ -333,7 +344,9 @@ nav.scrolled {
 }
 
 .btn-ghost {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   padding: 0.9rem 2.5rem;
   background: transparent;
   color: rgba(255, 255, 255, 0.75);
@@ -345,6 +358,7 @@ nav.scrolled {
   border-radius: 2px;
   transition: border-color var(--transition-fast), color var(--transition-fast);
   cursor: pointer;
+  min-height: 44px;
 }
 
 .btn-ghost:hover,
@@ -988,6 +1002,40 @@ footer {
 }
 
 /* ════════════════════════════════════════════════════════════════
+   TOUCH-OPTIMIZED HOVER STATES - IMPROVED: Only apply on devices with hover
+   ════════════════════════════════════════════════════════════════ */
+
+@media (hover: hover) {
+  .q-item:hover {
+    background: rgba(196, 154, 60, 0.05);
+  }
+
+  .svc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 48px rgba(28, 45, 79, 0.1);
+    border-color: rgba(196, 154, 60, 0.25);
+  }
+
+  .result-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(196, 154, 60, 0.25);
+    box-shadow: 0 12px 40px rgba(28, 45, 79, 0.1);
+  }
+
+  .client-n:hover {
+    color: var(--navy);
+  }
+
+  .client-cell:hover {
+    background: var(--cream);
+  }
+
+  .client-cell:hover .client-name {
+    color: var(--navy);
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
    ANIMATIONS
    ════════════════════════════════════════════════════════════════ */
 
@@ -1041,14 +1089,12 @@ footer {
    ════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 1024px) {
-  /* Tablets */
+  /* Tablets and smaller - IMPROVED: Logo text now visible on iPad (768px) */
   nav {
     padding: 1rem 2rem;
   }
 
-  .nav-logo-text {
-    display: none;
-  }
+  /* Logo text stays visible at this breakpoint - only hide at 480px and below */
 
   .nav-links {
     gap: 1.5rem;
@@ -1221,7 +1267,7 @@ footer {
 
   #hero {
     min-height: auto;
-    padding: 6rem 1.5rem 3rem;
+    padding: 4rem 1.5rem 3rem;
   }
 
   .hero-eyebrow {
@@ -1243,8 +1289,9 @@ footer {
 
   .btn-gold,
   .btn-ghost {
-    padding: 0.75rem 1.5rem;
+    padding: 0.9rem 1.75rem;
     font-size: 10px;
+    min-height: 44px;
   }
 
   .scroll-hint {
@@ -1363,7 +1410,7 @@ footer {
   }
 
   .svc-num {
-    font-size: 48px;
+    font-size: 40px;
   }
 
   .svc-title {
@@ -1410,7 +1457,7 @@ footer {
 
   .footer-copy,
   .footer-links {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .footer-links {
@@ -1430,6 +1477,15 @@ footer {
 
   .results-grid {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .result-card {
+    overflow: hidden;
+    min-width: 0;
+    word-break: break-word;
   }
 
   .result-card.wide {
@@ -1439,6 +1495,16 @@ footer {
   .result-card.wide .card-inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
+  }
+
+  .card-stat {
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+
+  .card-body {
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .stat {
@@ -1456,15 +1522,35 @@ footer {
   }
 
   .clients-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    border: 1px solid rgba(28, 45, 79, 0.07);
   }
 
   .client-cell {
     border-right: 1px solid rgba(28, 45, 79, 0.07);
+    border-bottom: 1px solid rgba(28, 45, 79, 0.07);
+    padding: 1.75rem 1rem;
   }
 
-  .client-cell:nth-child(3n) {
+  .client-cell:nth-child(odd) {
+    border-right: 1px solid rgba(28, 45, 79, 0.07);
+  }
+
+  .client-cell:nth-child(even) {
     border-right: none;
+  }
+
+  .client-cell:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+
+  .client-name {
+    font-size: 16px;
+  }
+
+  .client-sector {
+    font-size: 8px;
   }
 
   .section-header {
@@ -1478,7 +1564,7 @@ footer {
   /* Contact page responsive */
   .contact-wrap {
     grid-template-columns: 1fr;
-    gap: 3rem;
+    gap: 2rem;
   }
 
   .form-row {
@@ -1500,15 +1586,173 @@ footer {
   }
 }
 
+@media (max-width: 375px) {
+  /* Standard iPhone optimization (iPhone 6/7/8/SE) - IMPROVED: Fine-tuning for 375px width */
+
+  nav {
+    padding: 0.7rem 0.85rem;
+  }
+
+  .nav-logo-main {
+    font-size: 12px;
+  }
+
+  .nav-logo-sub {
+    font-size: 7px;
+  }
+
+  .nav-links a {
+    font-size: 10px;
+  }
+
+  #hero {
+    padding: 3.5rem 1rem 2rem;
+  }
+
+  .hero-title {
+    font-size: clamp(32px, 8vw, 48px);
+  }
+
+  .hero-sub {
+    font-size: clamp(14px, 1.8vw, 18px);
+  }
+
+  .section-h-light {
+    font-size: clamp(22px, 4vw, 32px);
+  }
+
+  .q-item {
+    padding: 1.1rem 0.9rem;
+  }
+
+  .q-text {
+    font-size: clamp(16px, 1.9vw, 22px);
+  }
+
+  .svc-card {
+    padding: 1.1rem;
+  }
+
+  .about-h {
+    font-size: clamp(20px, 3vw, 26px);
+  }
+
+  .story-h {
+    font-size: clamp(24px, 3.2vw, 36px);
+  }
+}
+
 @media (max-width: 480px) {
-  /* Extra small phones */
+  /* Extra small phones - IMPROVED: Logo text hidden only on very small phones, fixes for all grids */
 
   nav {
     padding: 0.75rem 1rem;
   }
 
+  .nav-logo-text {
+    display: none;
+  }
+
   #hero {
-    padding: 5rem 1rem 2rem;
+    padding: 4rem 1rem 2rem;
+    max-width: 100%;
+    overflow: hidden;
+  }
+
+  /* Results page grids - IMPROVED: Ensure proper mobile collapse */
+  .results-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .result-card {
+    overflow: hidden;
+    min-width: 0;
+    padding: 1.5rem;
+  }
+
+  .result-card.wide {
+    grid-column: 1;
+  }
+
+  .result-card.wide .card-inner {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .card-stat {
+    font-size: clamp(24px, 4vw, 40px);
+    word-break: break-word;
+  }
+
+  .card-body {
+    font-size: 13px;
+    word-break: break-word;
+  }
+
+  .card-company-name {
+    font-size: 9px;
+    word-break: break-word;
+  }
+
+  /* Stats grid - IMPROVED: 2x2 layout instead of 1x4 */
+  .stats-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .stat {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem;
+  }
+
+  .stat:last-child {
+    border-bottom: none;
+  }
+
+  .stat-n {
+    font-size: clamp(28px, 5vw, 44px);
+  }
+
+  .stat-l {
+    font-size: 10px;
+  }
+
+  /* Clients grid - IMPROVED: Single column, show all clients */
+  .clients-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .client-cell {
+    border-right: none !important;
+    border-bottom: 1px solid rgba(28, 45, 79, 0.07);
+    padding: 1.5rem 1rem;
+  }
+
+  .client-cell:last-child {
+    border-bottom: none;
+  }
+
+  .client-name {
+    font-size: 16px;
+  }
+
+  .client-sector {
+    font-size: 8px;
+  }
+
+  /* General overflow fixes */
+  body, main, section {
+    overflow-x: hidden;
+    max-width: 100%;
   }
 
   .hero-title {
@@ -1523,7 +1767,8 @@ footer {
   .btn-gold,
   .btn-ghost {
     width: 100%;
-    padding: 0.75rem 1.25rem;
+    padding: 0.9rem 1.5rem;
+    min-height: 44px;
   }
 
   #questions {
@@ -1722,18 +1967,21 @@ footer {
 .check-item {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.75rem;
   cursor: pointer;
+  padding: 0.35rem;
 }
 
 .check-item input[type="checkbox"] {
-  width: 16px;
-  height: 16px;
+  width: 24px;
+  height: 24px;
   border: 1px solid rgba(28, 45, 79, 0.2);
   border-radius: 2px;
   accent-color: var(--gold);
   cursor: pointer;
   flex-shrink: 0;
+  min-width: 24px;
+  min-height: 24px;
 }
 
 .check-item input[type="checkbox"]:checked {
@@ -1742,7 +1990,7 @@ footer {
 }
 
 .check-item span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 300;
   color: var(--text-mid);
 }
@@ -2104,6 +2352,8 @@ footer {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  overflow: hidden;
+  width: 100%;
 }
 
 .result-card {
