@@ -40,6 +40,8 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -1227,7 +1229,7 @@ footer {
     padding: 0.75rem 0;
     max-height: calc(100vh - 60px);
     overflow-y: auto;
-    width: 100vw;
+    width: 100%;
     position: fixed;
     left: 0;
     right: 0;
@@ -1273,13 +1275,18 @@ footer {
     min-height: 44px;
   }
 
+  /* Keep brand visible on mobile (was display:none — left users with an empty nav bar) */
   .nav-logo-text {
+    display: flex;
+  }
+
+  .nav-logo-sub {
     display: none;
   }
 
   #hero {
     min-height: auto;
-    padding: 3.5rem 1.5rem 2.5rem;
+    padding: 5rem 1.5rem 2.5rem;
     margin-top: 0;
   }
 
@@ -1457,8 +1464,8 @@ footer {
   }
 
   .tag {
-    font-size: 8px;
-    padding: 0.15rem 0.5rem;
+    font-size: 10px;
+    padding: 0.2rem 0.55rem;
   }
 
   #clients {
@@ -1517,8 +1524,9 @@ footer {
     gap: 1rem;
   }
 
-  /* Results page responsive */
-  #hero .hero-inner {
+  /* Results page responsive — :has() needed to beat desktop two-column rule */
+  #hero .hero-inner,
+  #hero:has(.hero-right) .hero-inner {
     grid-template-columns: 1fr;
     gap: 2rem;
     align-items: center;
@@ -1538,13 +1546,16 @@ footer {
   .result-card {
     overflow: visible;
     min-width: 0;
+    overflow-wrap: break-word;
   }
 
   .card-stat {
+    overflow-wrap: break-word;
     max-width: 100%;
   }
 
   .card-body {
+    overflow-wrap: break-word;
     max-width: 100%;
   }
 
@@ -1555,12 +1566,6 @@ footer {
   .result-card.wide .card-inner {
     grid-template-columns: 1fr;
     gap: 1.5rem;
-  }
-
-  .card-stat {
-  }
-
-  .card-body {
   }
 
   .stat {
@@ -1606,7 +1611,7 @@ footer {
   }
 
   .client-sector {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   .section-header {
@@ -1754,12 +1759,17 @@ footer {
     padding: 0.75rem 1rem;
   }
 
+  /* Keep brand visible at small mobile too */
   .nav-logo-text {
-    display: none;
+    display: flex;
+  }
+
+  .nav-logo-main {
+    font-size: 11px;
   }
 
   #hero {
-    padding: 4rem 1rem 2rem;
+    padding: 5rem 1rem 2rem;
     max-width: 100%;
     overflow: hidden;
   }
@@ -1789,17 +1799,17 @@ footer {
 
   .card-stat {
     font-size: clamp(24px, 4vw, 40px);
-    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .card-body {
     font-size: 13px;
-    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
   .card-company-name {
-    font-size: 9px;
-    word-break: break-word;
+    font-size: 11px;
+    overflow-wrap: break-word;
   }
 
   /* Stats grid - IMPROVED: 2x2 layout instead of 1x4 */
@@ -1851,7 +1861,7 @@ footer {
   }
 
   .client-sector {
-    font-size: 8px;
+    font-size: 10px;
   }
 
   /* General overflow fixes */
@@ -2041,7 +2051,7 @@ footer {
   border: 1px solid rgba(28, 45, 79, 0.15);
   border-radius: 2px;
   font-family: 'DM Sans', sans-serif;
-  font-size: 14.5px;
+  font-size: 16px; /* 16px to prevent iOS Safari zoom-on-focus */
   font-weight: 300;
   color: var(--navy);
   background: var(--cream);
@@ -2820,7 +2830,6 @@ footer {
   margin-bottom: 1.25rem;
   opacity: 0;
   animation: fadeUp 0.7s 0.35s ease forwards;
-  white-space: nowrap;
 }
 
 /* About page specific hero title styling */

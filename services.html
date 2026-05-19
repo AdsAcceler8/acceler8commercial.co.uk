@@ -6,11 +6,352 @@
   <title>Services — Acceler8 Commercial Ltd</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Services-specific styles */
+    #service-nav {
+      position: sticky;
+      top: 62px;
+      z-index: 150;
+      background: var(--navy-deep);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+      width: 100%;
+      margin-top: -12px;
+    }
+
+    .svc-tabs {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      padding: 0 3rem;
+    }
+
+    .svc-tab {
+      padding: 1rem 1.75rem;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.45);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+      text-decoration: none;
+      display: block;
+    }
+
+    .svc-tab:hover {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .svc-tab.active {
+      color: var(--gold);
+      border-bottom-color: var(--gold);
+    }
+
+    .svc-section {
+      padding: 7rem 3rem;
+      position: relative;
+    }
+
+    .svc-section:nth-child(odd) {
+      background: var(--white);
+    }
+
+    .svc-section:nth-child(even) {
+      background: var(--cream);
+    }
+
+    .svc-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(28, 45, 79, 0.08), transparent);
+    }
+
+    .svc-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .svc-inner.reverse {
+      direction: rtl;
+    }
+
+    .svc-inner.reverse > * {
+      direction: ltr;
+    }
+
+    .svc-left {
+      position: sticky;
+      top: 140px;
+    }
+
+    .svc-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(80px, 12vw, 160px);
+      font-weight: 600;
+      line-height: 0.85;
+      color: rgba(28, 45, 79, 0.06);
+      margin-bottom: -0.5rem;
+      display: block;
+    }
+
+    .svc-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .svc-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(28px, 3.5vw, 44px);
+      font-weight: 600;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+
+    .svc-title em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .svc-hook {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-mid);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(28, 45, 79, 0.1);
+    }
+
+    .svc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .svc-tag {
+      font-size: 9.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      border: 1px solid rgba(196, 154, 60, 0.35);
+      padding: 0.3rem 0.8rem;
+      border-radius: 2px;
+    }
+
+    .svc-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      margin-top: 2.5rem;
+      font-size: 11.5px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--navy);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .svc-cta:hover {
+      color: var(--gold);
+    }
+
+    .svc-cta::after {
+      content: '→';
+      font-size: 14px;
+      transition: transform 0.2s;
+    }
+
+    .svc-cta:hover::after {
+      transform: translateX(4px);
+    }
+
+    .svc-body p {
+      font-size: 15px;
+      line-height: 1.9;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+
+    .svc-body strong {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .svc-problem {
+      background: var(--navy);
+      padding: 2rem 2.25rem;
+      border-radius: 2px;
+      margin-bottom: 2rem;
+    }
+
+    .svc-problem-eye {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.35);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .svc-problem p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 400;
+      font-style: italic;
+      color: rgba(255, 255, 255, 0.85);
+      line-height: 1.55;
+      margin-bottom: 0;
+    }
+
+    .svc-delivers {
+      margin-top: 2rem;
+    }
+
+    .svc-delivers-title {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--navy);
+      margin-bottom: 1.25rem;
+      display: block;
+      font-weight: 500;
+    }
+
+    .svc-deliver-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.1rem;
+      align-items: flex-start;
+    }
+
+    .svc-deliver-item::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: var(--gold);
+      flex-shrink: 0;
+      margin-top: 0.65rem;
+    }
+
+    .svc-deliver-item p {
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+
+    .svc-deliver-item p strong {
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .svc-who {
+      margin-top: 2rem;
+      padding: 1.5rem 1.75rem;
+      border: 1px solid rgba(28, 45, 79, 0.08);
+      border-radius: 2px;
+    }
+
+    .svc-who-eye {
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .svc-who p {
+      font-size: 13.5px;
+      line-height: 1.75;
+      color: var(--text-mid);
+      font-weight: 300;
+      margin-bottom: 0;
+    }
+
+    /* Mobile Responsive */
+    @media (max-width: 1024px) {
+      #service-nav { top: 60px; }
+      .svc-tabs { padding: 0 2rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .svc-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .svc-section { padding: 4rem 2rem; }
+      .svc-left { position: static; }
+    }
+
+    @media (max-width: 768px) {
+      #service-nav { position: static; top: auto; margin-top: 0; background: var(--navy-deep); border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
+      .svc-tabs { padding: 0 1.5rem; overflow-x: auto; -webkit-overflow-scrolling: touch; flex-wrap: nowrap; gap: 0; white-space: nowrap; }
+      .svc-tab { padding: 0.95rem 1.1rem; font-size: 11px; flex-shrink: 0; min-width: auto; min-height: 44px; display: inline-flex; align-items: center; }
+      .svc-section { padding: 3rem 1.5rem; overflow: hidden; }
+      .svc-inner { grid-template-columns: 1fr; gap: 2rem; max-width: 100%; margin: 0; padding: 0; }
+      .svc-inner.reverse { direction: ltr; }
+      .svc-left { position: static; top: auto; }
+      .svc-num { font-size: clamp(48px, 10vw, 80px); margin-bottom: -0.75rem; }
+      .svc-eyebrow { font-size: 10px; margin-bottom: 0.75rem; }
+      .svc-title { font-size: clamp(22px, 5vw, 32px); margin-bottom: 1rem; }
+      .svc-hook { font-size: 15px; margin-bottom: 1.5rem; padding-bottom: 1.5rem; }
+      .svc-tags { gap: 0.4rem; }
+      .svc-tag { font-size: 10px; padding: 0.3rem 0.7rem; }
+      .svc-cta { font-size: 11px; margin-top: 2rem; padding: 0.65rem 0; min-height: 44px; display: inline-flex; align-items: center; }
+      .svc-body p { font-size: 14px; line-height: 1.7; margin-bottom: 1.25rem; }
+      .svc-problem { padding: 1.5rem 1.75rem; margin-bottom: 1.5rem; }
+      .svc-problem p { font-size: 17px; }
+      .svc-delivers-title { font-size: 10px; margin-bottom: 1rem; }
+      .svc-deliver-item { gap: 0.75rem; margin-bottom: 0.9rem; }
+      .svc-deliver-item p { font-size: 13px; }
+      .svc-who { padding: 1.25rem 1.5rem; }
+      .svc-who-eye { font-size: 9px; }
+      .svc-who p { font-size: 12.5px; }
+    }
+
+    @media (max-width: 480px) {
+      .svc-section { padding: 2.5rem 1rem; }
+      .svc-inner { gap: 1.5rem; }
+      .svc-num { font-size: clamp(40px, 8vw, 60px); }
+      .svc-eyebrow { font-size: 9px; margin-bottom: 0.5rem; }
+      .svc-title { font-size: clamp(18px, 4vw, 26px); margin-bottom: 0.75rem; line-height: 1.25; }
+      .svc-hook { font-size: 14px; margin-bottom: 1rem; padding-bottom: 1rem; }
+      .svc-tags { gap: 0.3rem; margin-top: 1rem; }
+      .svc-tag { font-size: 10px; padding: 0.25rem 0.6rem; }
+      .svc-cta { font-size: 11px; margin-top: 1.5rem; padding: 0.6rem 0; min-height: 44px; display: inline-flex; align-items: center; }
+      .svc-body p { font-size: 13px; line-height: 1.6; margin-bottom: 1rem; }
+      .svc-problem { padding: 1.25rem 1.5rem; margin-bottom: 1.25rem; }
+      .svc-problem p { font-size: 15px; line-height: 1.4; }
+      .svc-deliver-item { gap: 0.6rem; margin-bottom: 0.75rem; }
+      .svc-deliver-item p { font-size: 12px; line-height: 1.6; }
+      .svc-who { padding: 1rem 1.25rem; }
+      .svc-who-eye { font-size: 8px; margin-bottom: 0.5rem; }
+      .svc-who p { font-size: 12px; line-height: 1.6; }
+    }
+  </style>
 </head>
 <body>
 
+  <!-- Skip to main content link -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
+  <!-- ══ NAVIGATION ══ -->
   <nav id="nav" class="closed">
     <a href="index.html" class="nav-logo">
       <span class="nav-logo-text">
@@ -28,6 +369,7 @@
     </ul>
   </nav>
 
+  <!-- ══ HERO ══ -->
   <section id="hero">
     <div class="hero-inner">
       <div>
@@ -41,6 +383,7 @@
     </div>
   </section>
 
+  <!-- ══ SERVICE NAVIGATION ══ -->
   <div id="service-nav">
     <div class="svc-tabs">
       <a href="#s01" class="svc-tab active">01 · Revenue &amp; Growth</a>
@@ -50,8 +393,10 @@
     </div>
   </div>
 
+  <!-- ══ MAIN CONTENT ══ -->
   <main id="main-content">
 
+    <!-- ══ SERVICE 01 ══ -->
     <section class="svc-section" id="s01">
       <div class="svc-inner">
         <div class="svc-left reveal">
@@ -92,6 +437,7 @@
       </div>
     </section>
 
+    <!-- ══ SERVICE 02 ══ -->
     <section class="svc-section" id="s02">
       <div class="svc-inner reverse">
         <div class="svc-left reveal">
@@ -132,6 +478,7 @@
       </div>
     </section>
 
+    <!-- ══ SERVICE 03 ══ -->
     <section class="svc-section" id="s03">
       <div class="svc-inner">
         <div class="svc-left reveal">
@@ -172,6 +519,7 @@
       </div>
     </section>
 
+    <!-- ══ SERVICE 04 ══ -->
     <section class="svc-section" id="s04">
       <div class="svc-inner reverse">
         <div class="svc-left reveal">
@@ -216,6 +564,7 @@
 
   </main>
 
+  <!-- ══ CTA ══ -->
   <section id="cta">
     <div class="cta-inner">
       <span class="cta-eye">Ready to talk?</span>
@@ -225,6 +574,7 @@
     </div>
   </section>
 
+  <!-- ══ FOOTER ══ -->
   <footer>
     <div class="footer-in">
       <a href="index.html" class="nav-logo">
@@ -237,17 +587,21 @@
     </div>
   </footer>
 
+  <!-- ══ JAVASCRIPT ══ -->
   <script>
+    // Mobile menu toggle functionality
     const nav = document.getElementById('nav');
     const toggle = document.getElementById('mobile-menu-toggle');
     const navLinks = document.querySelectorAll('.nav-links a');
 
+    // Toggle menu open/closed
     toggle.addEventListener('click', function() {
       nav.classList.toggle('open');
       nav.classList.toggle('closed');
       toggle.setAttribute('aria-expanded', nav.classList.contains('open'));
     });
 
+    // Close menu when a link is clicked
     navLinks.forEach(link => {
       link.addEventListener('click', function() {
         nav.classList.remove('open');
@@ -256,12 +610,53 @@
       });
     });
 
+    // Close menu when window is resized above 768px
     window.addEventListener('resize', function() {
       if (window.innerWidth > 768) {
         nav.classList.remove('open');
         nav.classList.add('closed');
         toggle.setAttribute('aria-expanded', false);
       }
+    });
+
+    // Scroll spy for service tabs
+    const tabs = document.querySelectorAll('.svc-tab');
+    const sections = document.querySelectorAll('.svc-section');
+
+    window.addEventListener('scroll', function() {
+      let current = '';
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.clientHeight;
+        if (pageYOffset >= sectionTop - 200) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      tabs.forEach(tab => {
+        tab.classList.remove('active');
+        if (tab.getAttribute('href') === '#' + current) {
+          tab.classList.add('active');
+        }
+      });
+    });
+
+    // Reveal animations on scroll
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    reveals.forEach((el) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(20px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
     });
   </script>
 

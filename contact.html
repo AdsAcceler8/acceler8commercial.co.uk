@@ -221,13 +221,15 @@
   const menuBtn = document.getElementById('mobile-menu-toggle');
 
   menuBtn.addEventListener('click', () => {
+    nav.classList.toggle('open');
     nav.classList.toggle('closed');
-    menuBtn.setAttribute('aria-expanded', nav.classList.contains('closed') ? 'false' : 'true');
+    menuBtn.setAttribute('aria-expanded', nav.classList.contains('open') ? 'true' : 'false');
   });
 
   // Close menu when a link is clicked
   document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
+      nav.classList.remove('open');
       nav.classList.add('closed');
       menuBtn.setAttribute('aria-expanded', 'false');
     });
@@ -235,7 +237,8 @@
 
   // Close menu on Escape key
   document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !nav.classList.contains('closed')) {
+    if (e.key === 'Escape' && nav.classList.contains('open')) {
+      nav.classList.remove('open');
       nav.classList.add('closed');
       menuBtn.setAttribute('aria-expanded', 'false');
     }
@@ -244,6 +247,7 @@
   // Close menu when window is resized to desktop size
   window.addEventListener('resize', () => {
     if (window.innerWidth > 768) {
+      nav.classList.remove('open');
       nav.classList.add('closed');
       menuBtn.setAttribute('aria-expanded', 'false');
     }
