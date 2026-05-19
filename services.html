@@ -184,8 +184,8 @@ footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgb
   .hero-h{font-size:clamp(24px,6vw,40px)}
   .hero-intro{font-size:clamp(14px,1.8vw,17px);margin-bottom:1.5rem}
   #service-nav{padding:0;position:static;margin-top:-12px;background:var(--navy-deep)}
-  .svc-tabs{padding:0.75rem 1rem;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:0.5rem;white-space:nowrap}
-  .svc-tab{padding:0.6rem 0.9rem;font-size:9px;flex-shrink:0}
+  .svc-tabs{padding:0.6rem 0.75rem;overflow-x:auto;-webkit-overflow-scrolling:touch;flex-wrap:nowrap;gap:0.3rem;white-space:nowrap}
+  .svc-tab{padding:0.5rem 0.75rem;font-size:8px;flex-shrink:0;letter-spacing:0.08em}
   .svc-section{padding:2.25rem 1rem;overflow:hidden;width:100%;max-width:100%}
   .svc-inner{grid-template-columns:1fr;gap:1.5rem;max-width:100%;margin:0;padding:0}
   .svc-left{position:static;top:auto;sticky:none}
@@ -224,14 +224,16 @@ footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgb
 <body>
 
 <!-- ══ NAV ══ -->
-<nav>
+<nav id="nav" class="closed">
   <a href="index.html" class="nav-logo">
+    <svg class="logo-svg" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="40" height="40" rx="8" stroke="#C49A3C" stroke-width="1.5"/><path d="M14 22h16M14 28h16M16 16h12" stroke="#C49A3C" stroke-width="1.5" stroke-linecap="round"/></svg>
     
     <span class="nav-logo-text">
       <span class="nav-logo-main">Acceler8</span>
       <span class="nav-logo-sub">Commercial Ltd</span>
     </span>
   </a>
+  <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
   <ul class="nav-links">
     <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
@@ -471,6 +473,43 @@ footer{background:var(--navy-deep);padding:2.25rem 3rem;border-top:1px solid rgb
 </footer>
 
 <script>
+// ═══════════════════════════════════════════════════════════════
+// MOBILE MENU TOGGLE
+// ═══════════════════════════════════════════════════════════════
+const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+const nav = document.getElementById('nav');
+const navLinks = document.querySelectorAll('.nav-links a');
+
+if (mobileMenuToggle) {
+  mobileMenuToggle.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    nav.classList.toggle('closed');
+    const isOpen = nav.classList.contains('open');
+    mobileMenuToggle.setAttribute('aria-expanded', isOpen);
+  });
+
+  // Close menu when a link is clicked
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      nav.classList.remove('open');
+      nav.classList.add('closed');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  // Close menu on window resize (when back to desktop)
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      nav.classList.remove('open');
+      nav.classList.add('closed');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+    }
+  });
+}
+
+// ═══════════════════════════════════════════════════════════════
+// SCROLL REVEAL ANIMATION
+// ═══════════════════════════════════════════════════════════════
 // Scroll reveal
 const reveals = document.querySelectorAll('.reveal');
 const observer = new IntersectionObserver(entries => {
