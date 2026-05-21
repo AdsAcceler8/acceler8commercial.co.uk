@@ -2503,6 +2503,7 @@ footer {
   line-height: 1.65;
   max-width: 320px;
   text-align: right;
+  margin-left: auto;
 }
 
 .results-grid {
