@@ -7,6 +7,11 @@
   <title>Contact — Acceler8 Commercial Ltd</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 </head>
 <body>
 
@@ -15,11 +20,8 @@
 
 <!-- ══ NAV ══ -->
 <nav id="nav" class="closed">
-  <a href="index.html" class="nav-logo">
-    <span class="nav-logo-text">
-      <span class="nav-logo-main">Acceler8</span>
-      <span class="nav-logo-sub">Commercial Ltd</span>
-    </span>
+  <a href="index.html" class="nav-logo" aria-label="Acceler8 Commercial Ltd">
+    <img src="logo-on-dark-bg.webp" alt="Acceler8 Commercial Ltd" class="nav-logo-img">
   </a>
   <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
   <ul class="nav-links">
@@ -302,10 +304,4 @@
       } catch (err) {
         btn.textContent = 'Send Enquiry';
         btn.disabled = false;
-        alert('Something went wrong — please email us directly at adam@acceler8commercial.co.uk');
-      }
-    });
-  }
-</script>
-</body>
-</html>
+        alert('Something went wrong — please email us directly at adam@accel

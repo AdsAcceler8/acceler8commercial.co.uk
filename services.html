@@ -345,6 +345,11 @@
       .svc-who p { font-size: 12px; line-height: 1.6; }
     }
   </style>
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="favicon-180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="favicon-192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 </head>
 <body>
 
@@ -353,11 +358,8 @@
 
   <!-- ══ NAVIGATION ══ -->
   <nav id="nav" class="closed">
-    <a href="index.html" class="nav-logo">
-      <span class="nav-logo-text">
-        <span class="nav-logo-main">Acceler8</span>
-        <span class="nav-logo-sub">Commercial Ltd</span>
-      </span>
+    <a href="index.html" class="nav-logo" aria-label="Acceler8 Commercial Ltd">
+      <img src="logo-on-dark-bg.webp" alt="Acceler8 Commercial Ltd" class="nav-logo-img">
     </a>
     <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">☰</button>
     <ul class="nav-links">
@@ -577,11 +579,8 @@
   <!-- ══ FOOTER ══ -->
   <footer>
     <div class="footer-in">
-      <a href="index.html" class="nav-logo">
-        <span class="nav-logo-text">
-          <span class="nav-logo-main">Acceler8</span>
-          <span class="nav-logo-sub">Commercial Ltd</span>
-        </span>
+      <a href="index.html" class="nav-logo" aria-label="Acceler8 Commercial Ltd">
+        <img src="logo-on-dark-bg.webp" alt="Acceler8 Commercial Ltd" class="nav-logo-img">
       </a>
       <p style="font-size: 13px; color: rgba(255, 255, 255, 0.5);">&copy; 2024 Acceler8 Commercial Ltd. All rights reserved.</p>
     </div>
@@ -619,6 +618,11 @@
       }
     });
 
+    // Nav scroll effect - keep solid background when scrolled
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
     // Scroll spy for service tabs
     const tabs = document.querySelectorAll('.svc-tab');
     const sections = document.querySelectorAll('.svc-section');
@@ -647,18 +651,4 @@
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           entry.target.style.opacity = '1';
-          entry.target.style.transform = 'translateY(0)';
-        }
-      });
-    }, { threshold: 0.1 });
-
-    reveals.forEach((el) => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(20px)';
-      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-      observer.observe(el);
-    });
-  </script>
-
-</body>
-</html>
+          entry.target.sty

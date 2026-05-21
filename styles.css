@@ -82,7 +82,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   transition: background 0.4s, box-shadow 0.4s, max-height 0.3s ease;
-  background: transparent;
+  background: var(--navy-deep);
   width: 100%;
   overflow: hidden;
 }
@@ -98,6 +98,27 @@ nav.scrolled {
   gap: 10px;
   text-decoration: none;
   z-index: 101;
+}
+
+.nav-logo-img {
+  height: 40px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+/* Legacy classes kept for safety */
+.nav-logo-mark {
+  height: 36px;
+  width: auto;
+  display: block;
+  flex-shrink: 0;
+}
+
+.nav-logo-wordmark {
+  height: 32px;
+  width: auto;
+  display: block;
 }
 
 .nav-logo-text {
@@ -1099,6 +1120,10 @@ footer {
   }
 
   /* Logo text stays visible at this breakpoint - only hide at 480px and below */
+
+  .nav-logo-img {
+    height: 34px;
+  }
 
   .nav-links {
     gap: 1.5rem;
@@ -3391,5 +3416,227 @@ footer {
 
   .tl-right {
     padding: 1.25rem 1.5rem;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   FINAL MOBILE OVERRIDES (placed last to win cascade)
+   Fixes:
+   - Results: achievement boxes long/thin (results-grid not collapsing)
+   - Results: stats grid not showing all 4 highlights
+   - Services: top nav banner background
+   - Services: 01/02/03/04 tabs not all visible
+   ════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+  /* Make sure the nav always has a solid background on mobile */
+  nav,
+  nav.closed,
+  nav.scrolled {
+    background: var(--navy-deep) !important;
+  }
+
+  /* Logo sizing on mobile */
+  .nav-logo-mark {
+    height: 30px;
+  }
+
+  .nav-logo-wordmark {
+    height: 26px;
+  }
+
+  /* RESULTS PAGE: stats row - 2x2 grid so all 4 highlights fit */
+  #stats .stats-row {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  #stats .stat {
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding: 1.75rem 0.75rem !important;
+    text-align: center;
+  }
+
+  /* Remove right border on right-column cells (2nd, 4th) */
+  #stats .stat:nth-child(2n) {
+    border-right: none !important;
+  }
+
+  /* Remove bottom border on bottom-row cells (3rd, 4th) */
+  #stats .stat:nth-child(n+3) {
+    border-bottom: none !important;
+  }
+
+  #stats .stat-n {
+    font-size: clamp(28px, 7vw, 40px) !important;
+    margin-bottom: 0.4rem !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  #stats .stat-l {
+    font-size: 9.5px !important;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+  }
+
+  /* RESULTS PAGE: result cards - stack vertically, no horizontal overflow */
+  .results-section .results-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.25rem !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    overflow: hidden;
+  }
+
+  .results-section .result-card {
+    grid-column: auto !important;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    padding: 1.5rem !important;
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+
+  .results-section .result-card.wide {
+    grid-column: 1 / -1 !important;
+  }
+
+  .results-section .result-card.wide .card-inner {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .results-section .result-card .card-stat {
+    font-size: clamp(36px, 9vw, 56px) !important;
+    max-width: 100%;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .results-section .result-card.wide .card-stat {
+    font-size: clamp(40px, 12vw, 64px) !important;
+  }
+
+  .results-section .result-card .card-body {
+    font-size: 13.5px !important;
+    line-height: 1.7;
+    overflow-wrap: break-word;
+    word-break: normal;
+  }
+
+  .results-section .result-card .card-company {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  /* Section header: stack heading and note */
+  .results-section .section-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 2rem;
+  }
+
+  .results-section .section-note {
+    text-align: left;
+    max-width: 100%;
+  }
+
+  /* SERVICES PAGE: service tabs (01/02/03/04) - 2x2 grid instead of horizontal scroll */
+  #service-nav {
+    position: static !important;
+    top: auto !important;
+    margin-top: 0 !important;
+    background: var(--navy-deep) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  #service-nav .svc-tabs {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0 !important;
+    padding: 0 !important;
+    overflow: visible !important;
+    width: 100%;
+    max-width: 100%;
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  #service-nav .svc-tab {
+    padding: 0.85rem 0.65rem !important;
+    font-size: 10px !important;
+    letter-spacing: 0.04em !important;
+    text-align: center !important;
+    border-bottom: 2px solid transparent !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    background: var(--navy-deep);
+    white-space: normal !important;
+    flex-shrink: initial !important;
+    line-height: 1.3;
+    min-height: 44px;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Add divider lines for 2x2 grid */
+  #service-nav .svc-tab:nth-child(2n) {
+    border-right: none !important;
+  }
+
+  #service-nav .svc-tab:nth-child(-n+2) {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+  }
+
+  #service-nav .svc-tab.active {
+    border-bottom-color: var(--gold) !important;
+    color: var(--gold);
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra-small: tighten stats further and ensure card text fits */
+  #stats .stat {
+    padding: 1.4rem 0.5rem !important;
+  }
+
+  #stats .stat-n {
+    font-size: clamp(24px, 7vw, 36px) !important;
+  }
+
+  #stats .stat-l {
+    font-size: 9px !important;
+    letter-spacing: 0.06em;
+  }
+
+  .results-section .result-card {
+    padding: 1.25rem !important;
+  }
+
+  .results-section .result-card .card-stat {
+    font-size: clamp(32px, 9vw, 48px) !important;
+  }
+
+  .results-section .result-card.wide .card-stat {
+    font-size: clamp(36px, 11vw, 56px) !important;
+  }
+
+  .results-section .result-card .card-body {
+    font-size: 13px !important;
+    line-height: 1.65;
+  }
+
+  /* Service tabs - keep 2x2 even smaller */
+  #service-nav .svc-tab {
+    padding: 0.7rem 0.4rem !important;
+    font-size: 9.5px !important;
+    letter-spacing: 0.03em !important;
   }
 }
